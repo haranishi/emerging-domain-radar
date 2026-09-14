@@ -1,0 +1,36 @@
+[
+  {
+    "date": "2026-09-03",
+    "base": "USD",
+    "quote": "JPY",
+    "rate": 159.85,
+    "providers": [
+      {
+        "key": "AMCM",
+        "date": "2026-09-03",
+        "rate": 158.71
+      },
+      {
+        "key": "BOJ",
+        "date": "2026-09-01",
+        "rate": 159.99
+      },
+      {
+        "key": "ECB",
+        "date": "2026-09-02",
+        "rate": 159.6
+      },
+      {
+        "key": "FRED",
+        "date": "2026-08-28",
+        "rate": 159.97
+      },
+      {
+        "key": "BCC",
+        "date": "2026-09-03",
+        "rate": 2562.56,
+        "excluded": true
+      }
+    ]
+  }
+]

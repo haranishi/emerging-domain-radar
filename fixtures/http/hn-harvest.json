@@ -1,0 +1,291 @@
+{
+  "exhaustive": true,
+  "exhaustiveNbHits": true,
+  "hits": [
+    {
+      "objectID": "49600000",
+      "created_at": "2026-09-02T00:00:00.000Z",
+      "created_at_i": 1788307200,
+      "title": "Show HN: Vibe coding a compiler in a weekend",
+      "story_title": null,
+      "url": "https://example.org/hn/0",
+      "author": "poster0",
+      "points": 25,
+      "_tags": [
+        "story",
+        "author_poster0"
+      ]
+    },
+    {
+      "objectID": "49600011",
+      "created_at": "2026-09-01T01:00:00.000Z",
+      "created_at_i": 1788224400,
+      "title": "Context engineering beats prompt engineering",
+      "story_title": null,
+      "url": "https://example.org/hn/1",
+      "author": "poster1",
+      "points": 28,
+      "_tags": [
+        "story",
+        "author_poster1"
+      ]
+    },
+    {
+      "objectID": "49600022",
+      "created_at": "2026-08-31T02:00:00.000Z",
+      "created_at_i": 1788141600,
+      "title": "Synthetic memory for long-running agents",
+      "story_title": null,
+      "url": "https://example.org/hn/2",
+      "author": "poster2",
+      "points": 31,
+      "_tags": [
+        "story",
+        "author_poster2"
+      ]
+    },
+    {
+      "objectID": "49600033",
+      "created_at": "2026-08-30T03:00:00.000Z",
+      "created_at_i": 1788058800,
+      "title": "Agentic protocol draft published",
+      "story_title": null,
+      "url": "https://example.org/hn/3",
+      "author": "poster3",
+      "points": 34,
+      "_tags": [
+        "story",
+        "author_poster3"
+      ]
+    },
+    {
+      "objectID": "49600044",
+      "created_at": "2026-08-29T04:00:00.000Z",
+      "created_at_i": 1787976000,
+      "title": "Why we moved to context engineering",
+      "story_title": null,
+      "url": "https://example.org/hn/4",
+      "author": "poster4",
+      "points": 37,
+      "_tags": [
+        "story",
+        "author_poster4"
+      ]
+    },
+    {
+      "objectID": "49600055",
+      "created_at": "2026-08-28T05:00:00.000Z",
+      "created_at_i": 1787893200,
+      "title": "Show HN: Synthetic memory store for LLM agents",
+      "story_title": null,
+      "url": "https://example.org/hn/5",
+      "author": "poster5",
+      "points": 40,
+      "_tags": [
+        "story",
+        "author_poster5"
+      ]
+    },
+    {
+      "objectID": "49600066",
+      "created_at": "2026-09-02T06:00:00.000Z",
+      "created_at_i": 1788328800,
+      "title": "Ambient agents are the next interface",
+      "story_title": null,
+      "url": "https://example.org/hn/6",
+      "author": "poster6",
+      "points": 43,
+      "_tags": [
+        "story",
+        "author_poster6"
+      ]
+    },
+    {
+      "objectID": "49600077",
+      "created_at": "2026-09-01T07:00:00.000Z",
+      "created_at_i": 1788246000,
+      "title": "Ambient agents in production: six months in",
+      "story_title": null,
+      "url": "https://example.org/hn/7",
+      "author": "poster7",
+      "points": 46,
+      "_tags": [
+        "story",
+        "author_poster7"
+      ]
+    },
+    {
+      "objectID": "49600088",
+      "created_at": "2026-08-31T08:00:00.000Z",
+      "created_at_i": 1788163200,
+      "title": "Latent retrieval beats keyword search",
+      "story_title": null,
+      "url": "https://example.org/hn/8",
+      "author": "poster8",
+      "points": 49,
+      "_tags": [
+        "story",
+        "author_poster8"
+      ]
+    },
+    {
+      "objectID": "49600099",
+      "created_at": "2026-08-30T09:00:00.000Z",
+      "created_at_i": 1788080400,
+      "title": "Latent retrieval at scale",
+      "story_title": null,
+      "url": "https://example.org/hn/9",
+      "author": "poster9",
+      "points": 52,
+      "_tags": [
+        "story",
+        "author_poster9"
+      ]
+    },
+    {
+      "objectID": "49600110",
+      "created_at": "2026-08-29T10:00:00.000Z",
+      "created_at_i": 1787997600,
+      "title": "Show HN: an agentic protocol implementation",
+      "story_title": null,
+      "url": "https://example.org/hn/10",
+      "author": "poster10",
+      "points": 55,
+      "_tags": [
+        "story",
+        "author_poster10"
+      ]
+    },
+    {
+      "objectID": "49600121",
+      "created_at": "2026-08-28T11:00:00.000Z",
+      "created_at_i": 1787914800,
+      "title": "Vibe coding considered harmful",
+      "story_title": null,
+      "url": "https://example.org/hn/11",
+      "author": "poster11",
+      "points": 58,
+      "_tags": [
+        "story",
+        "author_poster11"
+      ]
+    },
+    {
+      "objectID": "49600132",
+      "created_at": "2026-09-02T00:00:00.000Z",
+      "created_at_i": 1788307200,
+      "title": "Durable execution for agent workflows",
+      "story_title": null,
+      "url": "https://example.org/hn/12",
+      "author": "poster12",
+      "points": 61,
+      "_tags": [
+        "story",
+        "author_poster12"
+      ]
+    },
+    {
+      "objectID": "49600143",
+      "created_at": "2026-09-01T01:00:00.000Z",
+      "created_at_i": 1788224400,
+      "title": "Durable execution patterns, revisited",
+      "story_title": null,
+      "url": "https://example.org/hn/13",
+      "author": "poster13",
+      "points": 64,
+      "_tags": [
+        "story",
+        "author_poster13"
+      ]
+    },
+    {
+      "objectID": "49600154",
+      "created_at": "2026-08-31T02:00:00.000Z",
+      "created_at_i": 1788141600,
+      "title": "Show HN: durable execution runtime in Rust",
+      "story_title": null,
+      "url": "https://example.org/hn/14",
+      "author": "poster14",
+      "points": 67,
+      "_tags": [
+        "story",
+        "author_poster14"
+      ]
+    },
+    {
+      "objectID": "49600165",
+      "created_at": "2026-08-30T03:00:00.000Z",
+      "created_at_i": 1788058800,
+      "title": "The rise of semantic caching",
+      "story_title": null,
+      "url": "https://example.org/hn/15",
+      "author": "poster15",
+      "points": 70,
+      "_tags": [
+        "story",
+        "author_poster15"
+      ]
+    },
+    {
+      "objectID": "49600176",
+      "created_at": "2026-08-29T04:00:00.000Z",
+      "created_at_i": 1787976000,
+      "title": "Semantic caching cut our bill by 60%",
+      "story_title": null,
+      "url": "https://example.org/hn/16",
+      "author": "poster16",
+      "points": 73,
+      "_tags": [
+        "story",
+        "author_poster16"
+      ]
+    },
+    {
+      "objectID": "49600187",
+      "created_at": "2026-08-28T05:00:00.000Z",
+      "created_at_i": 1787893200,
+      "title": "Semantic caching for retrieval pipelines",
+      "story_title": null,
+      "url": "https://example.org/hn/17",
+      "author": "poster17",
+      "points": 76,
+      "_tags": [
+        "story",
+        "author_poster17"
+      ]
+    },
+    {
+      "objectID": "49600198",
+      "created_at": "2026-09-02T06:00:00.000Z",
+      "created_at_i": 1788328800,
+      "title": "Sovereign compute is getting cheaper",
+      "story_title": null,
+      "url": "https://example.org/hn/18",
+      "author": "poster18",
+      "points": 79,
+      "_tags": [
+        "story",
+        "author_poster18"
+      ]
+    },
+    {
+      "objectID": "49600209",
+      "created_at": "2026-09-01T07:00:00.000Z",
+      "created_at_i": 1788246000,
+      "title": "Sovereign compute for small teams",
+      "story_title": null,
+      "url": "https://example.org/hn/19",
+      "author": "poster19",
+      "points": 82,
+      "_tags": [
+        "story",
+        "author_poster19"
+      ]
+    }
+  ],
+  "hitsPerPage": 200,
+  "nbHits": 20,
+  "nbPages": 1,
+  "page": 0,
+  "query": ""
+}

@@ -1,0 +1,337 @@
+{
+  "exhaustive": true,
+  "exhaustiveNbHits": true,
+  "exhaustiveTypo": true,
+  "hits": [
+    {
+      "objectID": "49500000",
+      "created_at": "2026-09-02T00:00:00.000Z",
+      "created_at_i": 1788307200,
+      "title": "Show HN: a small tool for context engineering (0)",
+      "story_title": null,
+      "url": "https://example.org/post/0",
+      "author": "user0",
+      "points": 20,
+      "_tags": [
+        "story",
+        "author_user0"
+      ]
+    },
+    {
+      "objectID": "49500137",
+      "created_at": "2026-09-01T01:00:00.000Z",
+      "created_at_i": 1788224400,
+      "title": null,
+      "story_title": "Context engineering in practice, part 1",
+      "url": null,
+      "author": "user1",
+      "points": null,
+      "_tags": [
+        "comment",
+        "author_user1",
+        "story_49500001"
+      ]
+    },
+    {
+      "objectID": "49500274",
+      "created_at": "2026-08-31T02:00:00.000Z",
+      "created_at_i": 1788141600,
+      "title": null,
+      "story_title": "Context engineering in practice, part 2",
+      "url": null,
+      "author": "user2",
+      "points": null,
+      "_tags": [
+        "comment",
+        "author_user2",
+        "story_49500002"
+      ]
+    },
+    {
+      "objectID": "49500411",
+      "created_at": "2026-08-29T03:00:00.000Z",
+      "created_at_i": 1787972400,
+      "title": "Show HN: a small tool for context engineering (3)",
+      "story_title": null,
+      "url": "https://example.org/post/3",
+      "author": "user3",
+      "points": 23,
+      "_tags": [
+        "story",
+        "author_user3"
+      ]
+    },
+    {
+      "objectID": "49500548",
+      "created_at": "2026-08-28T04:00:00.000Z",
+      "created_at_i": 1787889600,
+      "title": null,
+      "story_title": "Context engineering in practice, part 4",
+      "url": null,
+      "author": "user4",
+      "points": null,
+      "_tags": [
+        "comment",
+        "author_user4",
+        "story_49500004"
+      ]
+    },
+    {
+      "objectID": "49500685",
+      "created_at": "2026-08-26T05:00:00.000Z",
+      "created_at_i": 1787720400,
+      "title": null,
+      "story_title": "Context engineering in practice, part 5",
+      "url": null,
+      "author": "user5",
+      "points": null,
+      "_tags": [
+        "comment",
+        "author_user5",
+        "story_49500005"
+      ]
+    },
+    {
+      "objectID": "49500822",
+      "created_at": "2026-08-25T06:00:00.000Z",
+      "created_at_i": 1787637600,
+      "title": "Show HN: a small tool for context engineering (6)",
+      "story_title": null,
+      "url": "https://example.org/post/6",
+      "author": "user6",
+      "points": 26,
+      "_tags": [
+        "story",
+        "author_user6"
+      ]
+    },
+    {
+      "objectID": "49500959",
+      "created_at": "2026-08-24T07:00:00.000Z",
+      "created_at_i": 1787554800,
+      "title": null,
+      "story_title": "Context engineering in practice, part 7",
+      "url": null,
+      "author": "user7",
+      "points": null,
+      "_tags": [
+        "comment",
+        "author_user7",
+        "story_49500007"
+      ]
+    },
+    {
+      "objectID": "49501096",
+      "created_at": "2026-08-23T08:00:00.000Z",
+      "created_at_i": 1787472000,
+      "title": null,
+      "story_title": "Context engineering in practice, part 8",
+      "url": null,
+      "author": "user8",
+      "points": null,
+      "_tags": [
+        "comment",
+        "author_user8",
+        "story_49500008"
+      ]
+    },
+    {
+      "objectID": "49501233",
+      "created_at": "2026-08-22T09:00:00.000Z",
+      "created_at_i": 1787389200,
+      "title": "Show HN: a small tool for context engineering (9)",
+      "story_title": null,
+      "url": "https://example.org/post/9",
+      "author": "user9",
+      "points": 29,
+      "_tags": [
+        "story",
+        "author_user9"
+      ]
+    },
+    {
+      "objectID": "49501370",
+      "created_at": "2026-08-21T10:00:00.000Z",
+      "created_at_i": 1787306400,
+      "title": null,
+      "story_title": "Context engineering in practice, part 10",
+      "url": null,
+      "author": "user10",
+      "points": null,
+      "_tags": [
+        "comment",
+        "author_user10",
+        "story_49500010"
+      ]
+    },
+    {
+      "objectID": "49501507",
+      "created_at": "2026-08-21T11:00:00.000Z",
+      "created_at_i": 1787310000,
+      "title": null,
+      "story_title": "Context engineering in practice, part 11",
+      "url": null,
+      "author": "user11",
+      "points": null,
+      "_tags": [
+        "comment",
+        "author_user11",
+        "story_49500011"
+      ]
+    },
+    {
+      "objectID": "49501644",
+      "created_at": "2026-08-18T00:00:00.000Z",
+      "created_at_i": 1787011200,
+      "title": "Show HN: a small tool for context engineering (12)",
+      "story_title": null,
+      "url": "https://example.org/post/12",
+      "author": "user12",
+      "points": 32,
+      "_tags": [
+        "story",
+        "author_user12"
+      ]
+    },
+    {
+      "objectID": "49501781",
+      "created_at": "2026-08-16T01:00:00.000Z",
+      "created_at_i": 1786842000,
+      "title": null,
+      "story_title": "Context engineering in practice, part 13",
+      "url": null,
+      "author": "user13",
+      "points": null,
+      "_tags": [
+        "comment",
+        "author_user13",
+        "story_49500013"
+      ]
+    },
+    {
+      "objectID": "49501918",
+      "created_at": "2026-08-13T02:00:00.000Z",
+      "created_at_i": 1786586400,
+      "title": null,
+      "story_title": "Context engineering in practice, part 14",
+      "url": null,
+      "author": "user14",
+      "points": null,
+      "_tags": [
+        "comment",
+        "author_user14",
+        "story_49500014"
+      ]
+    },
+    {
+      "objectID": "49502055",
+      "created_at": "2026-08-10T03:00:00.000Z",
+      "created_at_i": 1786330800,
+      "title": "Show HN: a small tool for context engineering (15)",
+      "story_title": null,
+      "url": "https://example.org/post/15",
+      "author": "user15",
+      "points": 35,
+      "_tags": [
+        "story",
+        "author_user15"
+      ]
+    },
+    {
+      "objectID": "49502192",
+      "created_at": "2026-08-07T04:00:00.000Z",
+      "created_at_i": 1786075200,
+      "title": null,
+      "story_title": "Context engineering in practice, part 16",
+      "url": null,
+      "author": "user16",
+      "points": null,
+      "_tags": [
+        "comment",
+        "author_user16",
+        "story_49500016"
+      ]
+    },
+    {
+      "objectID": "49502329",
+      "created_at": "2026-08-01T05:00:00.000Z",
+      "created_at_i": 1785560400,
+      "title": null,
+      "story_title": "Context engineering in practice, part 17",
+      "url": null,
+      "author": "user17",
+      "points": null,
+      "_tags": [
+        "comment",
+        "author_user17",
+        "story_49500017"
+      ]
+    },
+    {
+      "objectID": "49502466",
+      "created_at": "2026-07-27T06:00:00.000Z",
+      "created_at_i": 1785132000,
+      "title": "Show HN: a small tool for context engineering (18)",
+      "story_title": null,
+      "url": "https://example.org/post/18",
+      "author": "user18",
+      "points": 38,
+      "_tags": [
+        "story",
+        "author_user18"
+      ]
+    },
+    {
+      "objectID": "49502603",
+      "created_at": "2026-07-21T07:00:00.000Z",
+      "created_at_i": 1784617200,
+      "title": null,
+      "story_title": "Context engineering in practice, part 19",
+      "url": null,
+      "author": "user19",
+      "points": null,
+      "_tags": [
+        "comment",
+        "author_user19",
+        "story_49500019"
+      ]
+    },
+    {
+      "objectID": "49502740",
+      "created_at": "2026-07-14T08:00:00.000Z",
+      "created_at_i": 1784016000,
+      "title": null,
+      "story_title": "Context engineering in practice, part 20",
+      "url": null,
+      "author": "user20",
+      "points": null,
+      "_tags": [
+        "comment",
+        "author_user20",
+        "story_49500020"
+      ]
+    },
+    {
+      "objectID": "49502877",
+      "created_at": "2026-07-08T09:00:00.000Z",
+      "created_at_i": 1783501200,
+      "title": "Show HN: a small tool for context engineering (21)",
+      "story_title": null,
+      "url": "https://example.org/post/21",
+      "author": "user21",
+      "points": 41,
+      "_tags": [
+        "story",
+        "author_user21"
+      ]
+    }
+  ],
+  "hitsPerPage": 1000,
+  "nbHits": 22,
+  "nbPages": 1,
+  "page": 0,
+  "params": "query=%22context+engineering%22&tags=%28story%2Ccomment%29&hitsPerPage=1000",
+  "processingTimeMS": 4,
+  "query": "\"context engineering\"",
+  "serverTimeMS": 5
+}

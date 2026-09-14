@@ -1,0 +1,15 @@
+{
+  "batchcomplete": "",
+  "query": {
+    "normalized": [{ "from": "world model", "to": "World model" }],
+    "redirects": [{ "from": "World model", "to": "Mental model" }],
+    "pages": {
+      "1868247": {
+        "pageid": 1868247,
+        "ns": 0,
+        "title": "Mental model",
+        "langlinks": [{ "lang": "ja", "*": "メンタルモデル" }]
+      }
+    }
+  }
+}

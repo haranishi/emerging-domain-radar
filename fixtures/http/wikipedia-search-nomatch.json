@@ -1,0 +1,28 @@
+{
+  "batchcomplete": "",
+  "query": {
+    "searchinfo": {
+      "totalhits": 2
+    },
+    "search": [
+      {
+        "ns": 0,
+        "title": "知的エージェント",
+        "pageid": 123456,
+        "size": 20480,
+        "wordcount": 2100,
+        "snippet": "…",
+        "timestamp": "2026-08-14T12:00:00.000Z"
+      },
+      {
+        "ns": 0,
+        "title": "大規模言語モデル",
+        "pageid": 654321,
+        "size": 30720,
+        "wordcount": 3400,
+        "snippet": "…",
+        "timestamp": "2026-08-19T12:00:00.000Z"
+      }
+    ]
+  }
+}

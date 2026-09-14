@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <link href="http://arxiv.org/api/query" rel="self" type="application/atom+xml"/>
+  <title type="html">ArXiv Query: search_query=cat:cs.AI OR cat:cs.CL OR cat:cs.LG OR cat:cs.SE</title>
+  <id>http://arxiv.org/api/fixture-harvest</id>
+  <updated>2026-09-03T12:00:00Z</updated>
+  <opensearch:totalResults xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">12</opensearch:totalResults>
+  <opensearch:startIndex xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">0</opensearch:startIndex>
+  <opensearch:itemsPerPage xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">300</opensearch:itemsPerPage>
+  <entry>
+    <id>http://arxiv.org/abs/2608.10100v1</id>
+    <updated>2026-09-02T12:00:00Z</updated>
+    <published>2026-09-02T12:00:00Z</published>
+    <title>Synthetic memory for autonomous agents</title>
+    <summary>  We study synthetic memory for autonomous agents and report empirical results.
+</summary>
+    <author><name>A. Researcher</name></author>
+    <link href="http://arxiv.org/abs/2608.10100v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2608.10100v1" rel="related" type="application/pdf"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.10101v1</id>
+    <updated>2026-09-01T12:00:00Z</updated>
+    <published>2026-09-01T12:00:00Z</published>
+    <title>Agentic protocol design and verification</title>
+    <summary>  We study agentic protocol design and verification and report empirical results.
+</summary>
+    <author><name>A. Researcher</name></author>
+    <link href="http://arxiv.org/abs/2608.10101v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2608.10101v1" rel="related" type="application/pdf"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.10102v1</id>
+    <updated>2026-08-31T12:00:00Z</updated>
+    <published>2026-08-31T12:00:00Z</published>
+    <title>Latent retrieval with sparse indexes</title>
+    <summary>  We study latent retrieval with sparse indexes and report empirical results.
+</summary>
+    <author><name>A. Researcher</name></author>
+    <link href="http://arxiv.org/abs/2608.10102v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2608.10102v1" rel="related" type="application/pdf"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.10103v1</id>
+    <updated>2026-08-30T12:00:00Z</updated>
+    <published>2026-08-30T12:00:00Z</published>
+    <title>Durable execution for long-running workflows</title>
+    <summary>  We study durable execution for long-running workflows and report empirical results.
+</summary>
+    <author><name>A. Researcher</name></author>
+    <link href="http://arxiv.org/abs/2608.10103v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2608.10103v1" rel="related" type="application/pdf"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.10104v1</id>
+    <updated>2026-08-29T12:00:00Z</updated>
+    <published>2026-08-29T12:00:00Z</published>
+    <title>Semantic caching of model responses</title>
+    <summary>  We study semantic caching of model responses and report empirical results.
+</summary>
+    <author><name>A. Researcher</name></author>
+    <link href="http://arxiv.org/abs/2608.10104v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2608.10104v1" rel="related" type="application/pdf"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.10105v1</id>
+    <updated>2026-08-28T12:00:00Z</updated>
+    <published>2026-08-28T12:00:00Z</published>
+    <title>Sovereign compute for research clusters</title>
+    <summary>  We study sovereign compute for research clusters and report empirical results.
+</summary>
+    <author><name>A. Researcher</name></author>
+    <link href="http://arxiv.org/abs/2608.10105v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2608.10105v1" rel="related" type="application/pdf"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.10106v1</id>
+    <updated>2026-08-27T12:00:00Z</updated>
+    <published>2026-08-27T12:00:00Z</published>
+    <title>Ambient agents and continuous context</title>
+    <summary>  We study ambient agents and continuous context and report empirical results.
+</summary>
+    <author><name>A. Researcher</name></author>
+    <link href="http://arxiv.org/abs/2608.10106v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2608.10106v1" rel="related" type="application/pdf"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.10107v1</id>
+    <updated>2026-08-26T12:00:00Z</updated>
+    <published>2026-08-26T12:00:00Z</published>
+    <title>Synthetic memory compression revisited</title>
+    <summary>  We study synthetic memory compression revisited and report empirical results.
+</summary>
+    <author><name>A. Researcher</name></author>
+    <link href="http://arxiv.org/abs/2608.10107v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2608.10107v1" rel="related" type="application/pdf"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.10108v1</id>
+    <updated>2026-08-25T12:00:00Z</updated>
+    <published>2026-08-25T12:00:00Z</published>
+    <title>Latent retrieval for scientific search</title>
+    <summary>  We study latent retrieval for scientific search and report empirical results.
+</summary>
+    <author><name>A. Researcher</name></author>
+    <link href="http://arxiv.org/abs/2608.10108v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2608.10108v1" rel="related" type="application/pdf"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.10109v1</id>
+    <updated>2026-08-24T12:00:00Z</updated>
+    <published>2026-08-24T12:00:00Z</published>
+    <title>Durable execution and exactly-once semantics</title>
+    <summary>  We study durable execution and exactly-once semantics and report empirical results.
+</summary>
+    <author><name>A. Researcher</name></author>
+    <link href="http://arxiv.org/abs/2608.10109v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2608.10109v1" rel="related" type="application/pdf"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.10110v1</id>
+    <updated>2026-08-23T12:00:00Z</updated>
+    <published>2026-08-23T12:00:00Z</published>
+    <title>Semantic caching under distribution shift</title>
+    <summary>  We study semantic caching under distribution shift and report empirical results.
+</summary>
+    <author><name>A. Researcher</name></author>
+    <link href="http://arxiv.org/abs/2608.10110v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2608.10110v1" rel="related" type="application/pdf"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.10111v1</id>
+    <updated>2026-08-22T12:00:00Z</updated>
+    <published>2026-08-22T12:00:00Z</published>
+    <title>Ambient agents: a systems perspective</title>
+    <summary>  We study ambient agents: a systems perspective and report empirical results.
+</summary>
+    <author><name>A. Researcher</name></author>
+    <link href="http://arxiv.org/abs/2608.10111v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2608.10111v1" rel="related" type="application/pdf"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+</feed>

@@ -1,0 +1,15 @@
+{
+  "batchcomplete": "",
+  "query": {
+    "normalized": [{ "from": "vibe-coding", "to": "Vibe-coding" }],
+    "redirects": [{ "from": "Vibe-coding", "to": "Vibe coding" }],
+    "pages": {
+      "77694311": {
+        "pageid": 77694311,
+        "ns": 0,
+        "title": "Vibe coding",
+        "langlinks": [{ "lang": "ja", "*": "バイブコーディング" }]
+      }
+    }
+  }
+}

@@ -1,0 +1,274 @@
+{
+  "items": [
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026080400",
+      "access": "all-access",
+      "agent": "user",
+      "views": 20
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026080500",
+      "access": "all-access",
+      "agent": "user",
+      "views": 23
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026080600",
+      "access": "all-access",
+      "agent": "user",
+      "views": 26
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026080700",
+      "access": "all-access",
+      "agent": "user",
+      "views": 29
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026080800",
+      "access": "all-access",
+      "agent": "user",
+      "views": 32
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026080900",
+      "access": "all-access",
+      "agent": "user",
+      "views": 35
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026081000",
+      "access": "all-access",
+      "agent": "user",
+      "views": 38
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026081100",
+      "access": "all-access",
+      "agent": "user",
+      "views": 20
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026081200",
+      "access": "all-access",
+      "agent": "user",
+      "views": 23
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026081300",
+      "access": "all-access",
+      "agent": "user",
+      "views": 26
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026081400",
+      "access": "all-access",
+      "agent": "user",
+      "views": 29
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026081500",
+      "access": "all-access",
+      "agent": "user",
+      "views": 32
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026081600",
+      "access": "all-access",
+      "agent": "user",
+      "views": 35
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026081700",
+      "access": "all-access",
+      "agent": "user",
+      "views": 38
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026081800",
+      "access": "all-access",
+      "agent": "user",
+      "views": 20
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026081900",
+      "access": "all-access",
+      "agent": "user",
+      "views": 23
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026082000",
+      "access": "all-access",
+      "agent": "user",
+      "views": 26
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026082100",
+      "access": "all-access",
+      "agent": "user",
+      "views": 29
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026082200",
+      "access": "all-access",
+      "agent": "user",
+      "views": 32
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026082300",
+      "access": "all-access",
+      "agent": "user",
+      "views": 35
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026082400",
+      "access": "all-access",
+      "agent": "user",
+      "views": 38
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026082500",
+      "access": "all-access",
+      "agent": "user",
+      "views": 20
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026082600",
+      "access": "all-access",
+      "agent": "user",
+      "views": 23
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026082700",
+      "access": "all-access",
+      "agent": "user",
+      "views": 26
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026082800",
+      "access": "all-access",
+      "agent": "user",
+      "views": 29
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026082900",
+      "access": "all-access",
+      "agent": "user",
+      "views": 32
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026083000",
+      "access": "all-access",
+      "agent": "user",
+      "views": 35
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026083100",
+      "access": "all-access",
+      "agent": "user",
+      "views": 38
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026090100",
+      "access": "all-access",
+      "agent": "user",
+      "views": 20
+    },
+    {
+      "project": "ja.wikipedia",
+      "article": "バイブコーディング",
+      "granularity": "daily",
+      "timestamp": "2026090200",
+      "access": "all-access",
+      "agent": "user",
+      "views": 23
+    }
+  ]
+}

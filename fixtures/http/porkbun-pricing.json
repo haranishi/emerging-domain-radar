@@ -1,0 +1,13 @@
+{
+  "status": "SUCCESS",
+  "pricing": {
+    "com": { "registration": "11.08", "renewal": "11.08", "transfer": "11.08", "coupons": [] },
+    "net": { "registration": "12.52", "renewal": "12.52", "transfer": "12.52", "coupons": [] },
+    "org": { "registration": "7.98", "renewal": "11.84", "transfer": "11.84", "coupons": [] },
+    "dev": { "registration": "8.75", "renewal": "12.87", "transfer": "12.87", "coupons": [] },
+    "app": { "registration": "8.75", "renewal": "14.93", "transfer": "14.93", "coupons": [] },
+    "io": { "registration": "28.12", "renewal": "51.80", "transfer": "51.80", "coupons": [] },
+    "ai": { "registration": "82.70", "renewal": "82.70", "transfer": "165.09", "coupons": [] },
+    "xyz": { "registration": "2.04", "renewal": "14.21", "transfer": "14.21", "coupons": [] }
+  }
+}

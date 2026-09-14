@@ -1,0 +1,11 @@
+{
+  "_comment": "オフラインモードの DNS 事前フィルタ。NS 配列を返すと taken（source: dns）、エラーコードなら RDAP へ回る。",
+  "records": {
+    "example.com": ["a.iana-servers.net", "b.iana-servers.net"],
+    "vibecoding.com": ["ns1.dan.com", "ns2.dan.com"],
+    "codingvibe.com": ["ns1.parkingcrew.net", "ns2.parkingcrew.net"],
+    "github.com": ["dns1.p08.nsone.net", "ns-1283.awsdns-32.org"],
+    "dnserror.com": "SERVFAIL"
+  },
+  "default": "ENOTFOUND"
+}

@@ -1,0 +1,4480 @@
+{
+  "_comment": "デモ用の完成データ。`npm run seed:demo` で DB に流し込むと、収集を実行しなくてもダッシュボードが確認できる（実際の収集結果ではない）。 作り方: metrics の件数だけ人が決め、scores と domains[].opportunityScore は src/lib のスコア実装（trend/score.ts・trend/status.ts・japan/score.ts・domain/score.ts・scoring/opportunity.ts）で計算した。 式や閾値を変えると tests/unit/demo-fixture.test.ts が落ちるので、そのとき同じ順序で計算し直す。 Status は 5 種類・fading・Japan Gap が null・空きゼロ・Price unavailable をすべて 1 件以上含めてある（画面の分岐を全部踏むため）。",
+  "referenceNow": "2026-09-03T00:00:00.000Z",
+  "run": {
+    "startedAt": "2026-09-03T00:00:00.000Z",
+    "finishedAt": "2026-09-03T00:00:00.000Z",
+    "status": "completed",
+    "notes": "seed:demo で投入したデモデータ（実際の収集結果ではない）"
+  },
+  "tldPrices": [
+    {
+      "tld": "com",
+      "registration": 11.08,
+      "renewal": 11.08,
+      "transfer": 11.08,
+      "currency": "USD",
+      "source": "porkbun-pricing-get"
+    },
+    {
+      "tld": "net",
+      "registration": 12.52,
+      "renewal": 12.52,
+      "transfer": 12.52,
+      "currency": "USD",
+      "source": "porkbun-pricing-get"
+    },
+    {
+      "tld": "io",
+      "registration": 28.12,
+      "renewal": 51.8,
+      "transfer": 51.8,
+      "currency": "USD",
+      "source": "porkbun-pricing-get"
+    }
+  ],
+  "fx": {
+    "base": "USD",
+    "quote": "JPY",
+    "rate": 159.85,
+    "asOf": "2026-09-03",
+    "source": "Frankfurter v2 (central-bank blend)",
+    "providers": [
+      {
+        "key": "AMCM",
+        "date": "2026-09-03",
+        "rate": 158.71
+      },
+      {
+        "key": "BOJ",
+        "date": "2026-09-01",
+        "rate": 159.99
+      },
+      {
+        "key": "ECB",
+        "date": "2026-09-02",
+        "rate": 159.6
+      },
+      {
+        "key": "FRED",
+        "date": "2026-08-28",
+        "rate": 159.97
+      }
+    ]
+  },
+  "watchlist": [
+    {
+      "keyword": "synthetic memory",
+      "domain": "synthmem.com",
+      "foundRegistrationPrice": 10.44,
+      "foundRenewalPrice": 10.44,
+      "currency": "USD",
+      "note": "発見時より値上がりしているかを見る用"
+    },
+    {
+      "keyword": "semantic caching",
+      "domain": "semanticcachinghq.com",
+      "foundRegistrationPrice": 11.08,
+      "foundRenewalPrice": 11.08,
+      "currency": "USD",
+      "note": null
+    }
+  ],
+  "keywords": [
+    {
+      "keyword": "context engineering",
+      "slug": "context-engineering",
+      "description": "モデルに渡す文脈そのものを設計対象として扱う考え方。プロンプトの文面より、何をどの順で入れるかを設計する。",
+      "whyEmerging": "HN・GitHub・arXiv・OpenAlex の 4 ソースで 30 日件数が前 30 日の 1.6 倍。プロンプトエンジニアリングの語からの言い換えが進んでいる（推測）。",
+      "firstSeenContext": "Context engineering beats prompt engineering（HN・2026-08-28）",
+      "relatedTerms": [
+        "context window",
+        "retrieval",
+        "prompt engineering",
+        "context compaction"
+      ],
+      "extractionMethod": "ngram+llm:anthropic",
+      "llmConfidence": 0.78,
+      "llmBasis": "confirmed",
+      "firstSeenAt": "2026-04-06T00:00:00.000Z",
+      "metrics": [
+        {
+          "source": "hn",
+          "window": "7d",
+          "count": 5,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22context%20engineering%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "prev7d",
+          "count": 8,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22context%20engineering%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "30d",
+          "count": 28,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22context%20engineering%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "prev30d",
+          "count": 12,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22context%20engineering%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "7d",
+          "count": 50,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22context%20engineering%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "prev7d",
+          "count": 48,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22context%20engineering%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "30d",
+          "count": 206,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22context%20engineering%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "prev30d",
+          "count": 150,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22context%20engineering%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "7d",
+          "count": 2,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=context%20engineering&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "prev7d",
+          "count": 1,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=context%20engineering&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "30d",
+          "count": 7,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=context%20engineering&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "prev30d",
+          "count": 4,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=context%20engineering&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "7d",
+          "count": 90,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22context%20engineering%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "prev7d",
+          "count": 60,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22context%20engineering%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "30d",
+          "count": 525,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22context%20engineering%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "prev30d",
+          "count": 300,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22context%20engineering%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "qiita",
+          "window": "30d",
+          "count": 141,
+          "approximate": false,
+          "queryUrl": "https://qiita.com/search?q=context%20engineering",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "qiita",
+          "window": "prev30d",
+          "count": 60,
+          "approximate": false,
+          "queryUrl": "https://qiita.com/search?q=context%20engineering",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "wikipv",
+          "window": "30d",
+          "count": 0,
+          "approximate": false,
+          "queryUrl": "https://ja.wikipedia.org/w/index.php?search=context%20engineering",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        }
+      ],
+      "scores": {
+        "trendScore": 28,
+        "noveltyScore": 60,
+        "japanGapScore": 52,
+        "status": "Trending",
+        "fading": false,
+        "breadth": 4,
+        "c30Units": 294.333,
+        "g7": 1.2171,
+        "g30": 1.5986,
+        "breakdown": {
+          "trend": {
+            "G": 9.024132646327324,
+            "growthRaw": 9.44846490242422,
+            "shrinkage": 0.9550898203592815,
+            "g": 1.2171052631578947,
+            "A": 0,
+            "a": 0.8542307070053391,
+            "B": 100,
+            "V": 17.668163893048728,
+            "weighted": 27.575487399476746,
+            "gates": [],
+            "trendScore": 28
+          },
+          "japanGap": {
+            "jpUnits": 141,
+            "enUnits": 294.3333333333333,
+            "qiitaUnits": 141,
+            "wikiUnits": 0,
+            "capped": false,
+            "score": 52
+          },
+          "novelty": {
+            "score": 60,
+            "ageDays": 150,
+            "firstSeenAt": "2026-04-06T00:00:00.000Z"
+          },
+          "aggregate": {
+            "c7": 58.66666666666667,
+            "c7prev": 47.66666666666667,
+            "c30": 294.3333333333333,
+            "c30prev": 183,
+            "S": 4,
+            "S_TOTAL": 4,
+            "unitsBySource": {
+              "hn": {
+                "7d": 1.6666666666666667,
+                "prev7d": 2.6666666666666665,
+                "30d": 9.333333333333334,
+                "prev30d": 4
+              },
+              "github": {
+                "7d": 25,
+                "prev7d": 24,
+                "30d": 103,
+                "prev30d": 75
+              },
+              "arxiv": {
+                "7d": 2,
+                "prev7d": 1,
+                "30d": 7,
+                "prev30d": 4
+              },
+              "openalex": {
+                "7d": 30,
+                "prev7d": 20,
+                "30d": 175,
+                "prev30d": 100
+              }
+            },
+            "rawBySource": {
+              "hn": {
+                "7d": 5,
+                "prev7d": 8,
+                "30d": 28,
+                "prev30d": 12
+              },
+              "github": {
+                "7d": 50,
+                "prev7d": 48,
+                "30d": 206,
+                "prev30d": 150
+              },
+              "arxiv": {
+                "7d": 2,
+                "prev7d": 1,
+                "30d": 7,
+                "prev30d": 4
+              },
+              "openalex": {
+                "7d": 90,
+                "prev7d": 60,
+                "30d": 525,
+                "prev30d": 300
+              }
+            }
+          }
+        }
+      },
+      "domains": [
+        {
+          "domain": "contexteng.com",
+          "generationRule": "abbrev",
+          "domainScore": 88,
+          "trademarkFlag": null,
+          "availability": "taken",
+          "availabilitySource": "dns",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "contextengineering.com",
+          "generationRule": "concat",
+          "domainScore": 75,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 38,
+          "opportunityBreakdown": {
+            "trend": 28,
+            "domain": 75,
+            "japanGap": 52,
+            "novelty": 60,
+            "base": 48.15,
+            "mainstreamPenalty": 10,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 38
+          }
+        },
+        {
+          "domain": "engineeringcontext.com",
+          "generationRule": "reorder",
+          "domainScore": 71,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 37,
+          "opportunityBreakdown": {
+            "trend": 28,
+            "domain": 71,
+            "japanGap": 52,
+            "novelty": 60,
+            "base": 47.15,
+            "mainstreamPenalty": 10,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 37
+          }
+        },
+        {
+          "domain": "contextengineeringai.com",
+          "generationRule": "suffix",
+          "domainScore": 64,
+          "trademarkFlag": null,
+          "availability": "unknown",
+          "availabilitySource": "budget",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "contextengineeringlabs.com",
+          "generationRule": "suffix",
+          "domainScore": 61,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 35,
+          "opportunityBreakdown": {
+            "trend": 28,
+            "domain": 61,
+            "japanGap": 52,
+            "novelty": 60,
+            "base": 44.65,
+            "mainstreamPenalty": 10,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 35
+          }
+        },
+        {
+          "domain": "contextengineeringhq.com",
+          "generationRule": "suffix",
+          "domainScore": 61,
+          "trademarkFlag": null,
+          "availability": "taken",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "contextengineeringhub.com",
+          "generationRule": "suffix",
+          "domainScore": 59,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 34,
+          "opportunityBreakdown": {
+            "trend": 28,
+            "domain": 59,
+            "japanGap": 52,
+            "novelty": 60,
+            "base": 44.15,
+            "mainstreamPenalty": 10,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 34
+          }
+        }
+      ],
+      "fallbackOpportunity": null,
+      "_order": 0
+    },
+    {
+      "keyword": "synthetic memory",
+      "slug": "synthetic-memory",
+      "description": "エージェントが自分で要約・再構成した記憶を保持する仕組み。生ログではなく合成した記憶を持たせる。",
+      "whyEmerging": "4 ソースすべてで 30 日件数が前 30 日の約 2 倍。絶対数はまだ小さい。",
+      "firstSeenContext": "Show HN: Synthetic memory store for LLM agents（HN・2026-08-30）",
+      "relatedTerms": [
+        "memory compaction",
+        "episodic memory",
+        "agent memory",
+        "context compression"
+      ],
+      "extractionMethod": "ngram+llm:anthropic",
+      "llmConfidence": 0.64,
+      "llmBasis": "inferred",
+      "firstSeenAt": "2026-07-21T00:00:00.000Z",
+      "metrics": [
+        {
+          "source": "hn",
+          "window": "7d",
+          "count": 3,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22synthetic%20memory%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "prev7d",
+          "count": 1,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22synthetic%20memory%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "30d",
+          "count": 6,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22synthetic%20memory%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "prev30d",
+          "count": 2,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22synthetic%20memory%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "7d",
+          "count": 4,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22synthetic%20memory%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "prev7d",
+          "count": 2,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22synthetic%20memory%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "30d",
+          "count": 9,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22synthetic%20memory%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "prev30d",
+          "count": 3,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22synthetic%20memory%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "7d",
+          "count": 2,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=synthetic%20memory&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "prev7d",
+          "count": 0,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=synthetic%20memory&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "30d",
+          "count": 3,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=synthetic%20memory&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "prev30d",
+          "count": 1,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=synthetic%20memory&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "7d",
+          "count": 5,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22synthetic%20memory%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "prev7d",
+          "count": 2,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22synthetic%20memory%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "30d",
+          "count": 12,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22synthetic%20memory%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "prev30d",
+          "count": 6,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22synthetic%20memory%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "qiita",
+          "window": "30d",
+          "count": 3,
+          "approximate": false,
+          "queryUrl": "https://qiita.com/search?q=synthetic%20memory",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "qiita",
+          "window": "prev30d",
+          "count": 1,
+          "approximate": false,
+          "queryUrl": "https://qiita.com/search?q=synthetic%20memory",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "wikipv",
+          "window": "30d",
+          "count": 0,
+          "approximate": false,
+          "queryUrl": "https://ja.wikipedia.org/w/index.php?search=synthetic%20memory",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        }
+      ],
+      "scores": {
+        "trendScore": 62,
+        "noveltyScore": 85,
+        "japanGapScore": 78,
+        "status": "Emerging",
+        "fading": false,
+        "breadth": 4,
+        "c30Units": 13.5,
+        "g7": 1.9333,
+        "g30": 2.0204,
+        "breakdown": {
+          "trend": {
+            "G": 20.104349908532843,
+            "growthRaw": 31.703013317301792,
+            "shrinkage": 0.6341463414634146,
+            "g": 1.9333333333333336,
+            "A": 100,
+            "a": 2.1164021164021163,
+            "B": 100,
+            "V": 61.293333822863175,
+            "weighted": 62.359855923702284,
+            "gates": [],
+            "trendScore": 62
+          },
+          "japanGap": {
+            "jpUnits": 3,
+            "enUnits": 13.5,
+            "qiitaUnits": 3,
+            "wikiUnits": 0,
+            "capped": false,
+            "score": 78
+          },
+          "novelty": {
+            "score": 85,
+            "ageDays": 44,
+            "firstSeenAt": "2026-07-21T00:00:00.000Z"
+          },
+          "aggregate": {
+            "c7": 6.666666666666667,
+            "c7prev": 2,
+            "c30": 13.5,
+            "c30prev": 5.166666666666666,
+            "S": 4,
+            "S_TOTAL": 4,
+            "unitsBySource": {
+              "hn": {
+                "7d": 1,
+                "prev7d": 0.3333333333333333,
+                "30d": 2,
+                "prev30d": 0.6666666666666666
+              },
+              "github": {
+                "7d": 2,
+                "prev7d": 1,
+                "30d": 4.5,
+                "prev30d": 1.5
+              },
+              "arxiv": {
+                "7d": 2,
+                "prev7d": 0,
+                "30d": 3,
+                "prev30d": 1
+              },
+              "openalex": {
+                "7d": 1.6666666666666667,
+                "prev7d": 0.6666666666666666,
+                "30d": 4,
+                "prev30d": 2
+              }
+            },
+            "rawBySource": {
+              "hn": {
+                "7d": 3,
+                "prev7d": 1,
+                "30d": 6,
+                "prev30d": 2
+              },
+              "github": {
+                "7d": 4,
+                "prev7d": 2,
+                "30d": 9,
+                "prev30d": 3
+              },
+              "arxiv": {
+                "7d": 2,
+                "prev7d": 0,
+                "30d": 3,
+                "prev30d": 1
+              },
+              "openalex": {
+                "7d": 5,
+                "prev7d": 2,
+                "30d": 12,
+                "prev30d": 6
+              }
+            }
+          }
+        }
+      },
+      "domains": [
+        {
+          "domain": "syntheticmem.com",
+          "generationRule": "abbrev",
+          "domainScore": 86,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 74,
+          "opportunityBreakdown": {
+            "trend": 62,
+            "domain": 86,
+            "japanGap": 78,
+            "novelty": 85,
+            "base": 73.85000000000001,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 74
+          }
+        },
+        {
+          "domain": "synthmem.com",
+          "generationRule": "abbrev",
+          "domainScore": 85,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 74,
+          "opportunityBreakdown": {
+            "trend": 62,
+            "domain": 85,
+            "japanGap": 78,
+            "novelty": 85,
+            "base": 73.60000000000001,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 74
+          }
+        },
+        {
+          "domain": "synthmemory.com",
+          "generationRule": "abbrev",
+          "domainScore": 84,
+          "trademarkFlag": null,
+          "availability": "taken",
+          "availabilitySource": "dns",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "syntheticmemory.com",
+          "generationRule": "concat",
+          "domainScore": 84,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": null,
+          "renewalPrice": null,
+          "currency": null,
+          "premium": "standard_inferred",
+          "priceSource": null,
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 73,
+          "opportunityBreakdown": {
+            "trend": 62,
+            "domain": 84,
+            "japanGap": 78,
+            "novelty": 85,
+            "base": 73.35000000000001,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 73
+          }
+        },
+        {
+          "domain": "memorysynthetic.com",
+          "generationRule": "reorder",
+          "domainScore": 79,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 72,
+          "opportunityBreakdown": {
+            "trend": 62,
+            "domain": 79,
+            "japanGap": 78,
+            "novelty": 85,
+            "base": 72.10000000000001,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 72
+          }
+        },
+        {
+          "domain": "syntheticmemoryai.com",
+          "generationRule": "suffix",
+          "domainScore": 75,
+          "trademarkFlag": null,
+          "availability": "unknown",
+          "availabilitySource": "budget",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "syntheticmemoryhq.com",
+          "generationRule": "suffix",
+          "domainScore": 75,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 71,
+          "opportunityBreakdown": {
+            "trend": 62,
+            "domain": 75,
+            "japanGap": 78,
+            "novelty": 85,
+            "base": 71.10000000000001,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 71
+          }
+        },
+        {
+          "domain": "syntheticmemoryhub.com",
+          "generationRule": "suffix",
+          "domainScore": 71,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 70,
+          "opportunityBreakdown": {
+            "trend": 62,
+            "domain": 71,
+            "japanGap": 78,
+            "novelty": 85,
+            "base": 70.10000000000001,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 70
+          }
+        },
+        {
+          "domain": "syntheticmemorylabs.com",
+          "generationRule": "suffix",
+          "domainScore": 69,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 70,
+          "opportunityBreakdown": {
+            "trend": 62,
+            "domain": 69,
+            "japanGap": 78,
+            "novelty": 85,
+            "base": 69.60000000000001,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 70
+          }
+        }
+      ],
+      "fallbackOpportunity": null,
+      "_order": 1
+    },
+    {
+      "keyword": "agentic protocol",
+      "slug": "agentic-protocol",
+      "description": "エージェント同士が能力・権限・手順をやり取りするための取り決め。MCP 以降に増えた語。",
+      "whyEmerging": "30 日件数が前 30 日の 2.3 倍。GitHub の実装リポジトリが先行し、論文が後を追っている。",
+      "firstSeenContext": "Agentic protocol draft published（HN・2026-08-25）",
+      "relatedTerms": [
+        "tool calling",
+        "capability negotiation",
+        "agent interop",
+        "mcp"
+      ],
+      "extractionMethod": "ngram",
+      "llmConfidence": null,
+      "llmBasis": null,
+      "firstSeenAt": "2026-06-25T00:00:00.000Z",
+      "metrics": [
+        {
+          "source": "hn",
+          "window": "7d",
+          "count": 8,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22agentic%20protocol%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "prev7d",
+          "count": 4,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22agentic%20protocol%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "30d",
+          "count": 22,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22agentic%20protocol%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "prev30d",
+          "count": 9,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22agentic%20protocol%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "7d",
+          "count": 20,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22agentic%20protocol%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "prev7d",
+          "count": 9,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22agentic%20protocol%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "30d",
+          "count": 60,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22agentic%20protocol%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "prev30d",
+          "count": 25,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22agentic%20protocol%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "7d",
+          "count": 3,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=agentic%20protocol&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "prev7d",
+          "count": 1,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=agentic%20protocol&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "30d",
+          "count": 8,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=agentic%20protocol&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "prev30d",
+          "count": 3,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=agentic%20protocol&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "7d",
+          "count": 20,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22agentic%20protocol%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "prev7d",
+          "count": 8,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22agentic%20protocol%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "30d",
+          "count": 48,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22agentic%20protocol%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "prev30d",
+          "count": 20,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22agentic%20protocol%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "qiita",
+          "window": "30d",
+          "count": 18,
+          "approximate": false,
+          "queryUrl": "https://qiita.com/search?q=agentic%20protocol",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "qiita",
+          "window": "prev30d",
+          "count": 7,
+          "approximate": false,
+          "queryUrl": "https://qiita.com/search?q=agentic%20protocol",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "wikipv",
+          "window": "30d",
+          "count": 0,
+          "approximate": false,
+          "queryUrl": "https://ja.wikipedia.org/w/index.php?search=agentic%20protocol",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        }
+      ],
+      "scores": {
+        "trendScore": 52,
+        "noveltyScore": 60,
+        "japanGapScore": 71,
+        "status": "Rising",
+        "fading": false,
+        "breadth": 4,
+        "c30Units": 61.333,
+        "g7": 2.0267,
+        "g30": 2.284,
+        "breakdown": {
+          "trend": {
+            "G": 29.358941958221948,
+            "growthRaw": 33.97029409825681,
+            "shrinkage": 0.8642533936651584,
+            "g": 2.0266666666666664,
+            "A": 56.055900621117985,
+            "a": 1.5605590062111798,
+            "B": 100,
+            "V": 40.184643105887176,
+            "weighted": 51.53297058607307,
+            "gates": [],
+            "trendScore": 52
+          },
+          "japanGap": {
+            "jpUnits": 18,
+            "enUnits": 61.333333333333336,
+            "qiitaUnits": 18,
+            "wikiUnits": 0,
+            "capped": false,
+            "score": 71
+          },
+          "novelty": {
+            "score": 60,
+            "ageDays": 70,
+            "firstSeenAt": "2026-06-25T00:00:00.000Z"
+          },
+          "aggregate": {
+            "c7": 22.333333333333332,
+            "c7prev": 9.5,
+            "c30": 61.333333333333336,
+            "c30prev": 25.166666666666668,
+            "S": 4,
+            "S_TOTAL": 4,
+            "unitsBySource": {
+              "hn": {
+                "7d": 2.6666666666666665,
+                "prev7d": 1.3333333333333333,
+                "30d": 7.333333333333333,
+                "prev30d": 3
+              },
+              "github": {
+                "7d": 10,
+                "prev7d": 4.5,
+                "30d": 30,
+                "prev30d": 12.5
+              },
+              "arxiv": {
+                "7d": 3,
+                "prev7d": 1,
+                "30d": 8,
+                "prev30d": 3
+              },
+              "openalex": {
+                "7d": 6.666666666666667,
+                "prev7d": 2.6666666666666665,
+                "30d": 16,
+                "prev30d": 6.666666666666667
+              }
+            },
+            "rawBySource": {
+              "hn": {
+                "7d": 8,
+                "prev7d": 4,
+                "30d": 22,
+                "prev30d": 9
+              },
+              "github": {
+                "7d": 20,
+                "prev7d": 9,
+                "30d": 60,
+                "prev30d": 25
+              },
+              "arxiv": {
+                "7d": 3,
+                "prev7d": 1,
+                "30d": 8,
+                "prev30d": 3
+              },
+              "openalex": {
+                "7d": 20,
+                "prev7d": 8,
+                "30d": 48,
+                "prev30d": 20
+              }
+            }
+          }
+        }
+      },
+      "domains": [
+        {
+          "domain": "agentic.com",
+          "generationRule": "partial",
+          "domainScore": 89,
+          "trademarkFlag": null,
+          "availability": "taken",
+          "availabilitySource": "dns",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "agenticproto.com",
+          "generationRule": "abbrev",
+          "domainScore": 84,
+          "trademarkFlag": null,
+          "availability": "taken",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "agenticprotocol.com",
+          "generationRule": "concat",
+          "domainScore": 84,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 64,
+          "opportunityBreakdown": {
+            "trend": 52,
+            "domain": 84,
+            "japanGap": 71,
+            "novelty": 60,
+            "base": 64.05000000000001,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 64
+          }
+        },
+        {
+          "domain": "protocolagentic.com",
+          "generationRule": "reorder",
+          "domainScore": 79,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 63,
+          "opportunityBreakdown": {
+            "trend": 52,
+            "domain": 79,
+            "japanGap": 71,
+            "novelty": 60,
+            "base": 62.800000000000004,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 63
+          }
+        },
+        {
+          "domain": "agenticprotocolhq.com",
+          "generationRule": "suffix",
+          "domainScore": 75,
+          "trademarkFlag": null,
+          "availability": "unknown",
+          "availabilitySource": "budget",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "agenticprotocolai.com",
+          "generationRule": "suffix",
+          "domainScore": 72,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 61,
+          "opportunityBreakdown": {
+            "trend": 52,
+            "domain": 72,
+            "japanGap": 71,
+            "novelty": 60,
+            "base": 61.050000000000004,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 61
+          }
+        },
+        {
+          "domain": "agenticprotocolhub.com",
+          "generationRule": "suffix",
+          "domainScore": 71,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 61,
+          "opportunityBreakdown": {
+            "trend": 52,
+            "domain": 71,
+            "japanGap": 71,
+            "novelty": 60,
+            "base": 60.800000000000004,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 61
+          }
+        },
+        {
+          "domain": "agenticprotocollabs.com",
+          "generationRule": "suffix",
+          "domainScore": 66,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 60,
+          "opportunityBreakdown": {
+            "trend": 52,
+            "domain": 66,
+            "japanGap": 71,
+            "novelty": 60,
+            "base": 59.550000000000004,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 60
+          }
+        }
+      ],
+      "fallbackOpportunity": null,
+      "_order": 2
+    },
+    {
+      "keyword": "latent retrieval",
+      "slug": "latent-retrieval",
+      "description": "検索キーではなく潜在表現の近さで文書を引く手法の総称。",
+      "whyEmerging": "件数は少なく、伸びも横ばい。一過性かどうかを見るために監視だけ続ける。",
+      "firstSeenContext": "Latent retrieval beats keyword search（HN・2026-08-29）",
+      "relatedTerms": [
+        "dense retrieval",
+        "embedding search",
+        "vector index"
+      ],
+      "extractionMethod": "ngram",
+      "llmConfidence": null,
+      "llmBasis": null,
+      "firstSeenAt": "2026-08-09T00:00:00.000Z",
+      "metrics": [
+        {
+          "source": "hn",
+          "window": "7d",
+          "count": 1,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22latent%20retrieval%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "prev7d",
+          "count": 0,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22latent%20retrieval%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "30d",
+          "count": 2,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22latent%20retrieval%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "prev30d",
+          "count": 1,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22latent%20retrieval%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "7d",
+          "count": 1,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22latent%20retrieval%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "prev7d",
+          "count": 1,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22latent%20retrieval%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "30d",
+          "count": 3,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22latent%20retrieval%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "prev30d",
+          "count": 2,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22latent%20retrieval%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "7d",
+          "count": 1,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=latent%20retrieval&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "prev7d",
+          "count": 0,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=latent%20retrieval&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "30d",
+          "count": 2,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=latent%20retrieval&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "prev30d",
+          "count": 2,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=latent%20retrieval&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "7d",
+          "count": 2,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22latent%20retrieval%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "prev7d",
+          "count": 1,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22latent%20retrieval%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "30d",
+          "count": 4,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22latent%20retrieval%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "prev30d",
+          "count": 3,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22latent%20retrieval%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "qiita",
+          "window": "30d",
+          "count": 0,
+          "approximate": false,
+          "queryUrl": "https://qiita.com/search?q=latent%20retrieval",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "qiita",
+          "window": "prev30d",
+          "count": 0,
+          "approximate": false,
+          "queryUrl": "https://qiita.com/search?q=latent%20retrieval",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "wikipv",
+          "window": "30d",
+          "count": 0,
+          "approximate": false,
+          "queryUrl": "https://ja.wikipedia.org/w/index.php?search=latent%20retrieval",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        }
+      ],
+      "scores": {
+        "trendScore": 60,
+        "noveltyScore": 100,
+        "japanGapScore": 100,
+        "status": "Early",
+        "fading": false,
+        "breadth": 4,
+        "c30Units": 5.5,
+        "g7": 1.4348,
+        "g30": 1.1591,
+        "breakdown": {
+          "trend": {
+            "G": 6.94442884401921,
+            "growthRaw": 17.361072110048024,
+            "shrinkage": 0.4,
+            "g": 1.4347826086956523,
+            "A": 94.80519480519484,
+            "a": 1.9480519480519485,
+            "B": 100,
+            "V": 72.90680829335906,
+            "weighted": 59.61829112978546,
+            "gates": [],
+            "trendScore": 60
+          },
+          "japanGap": {
+            "jpUnits": 0,
+            "enUnits": 5.499999999999999,
+            "qiitaUnits": 0,
+            "wikiUnits": 0,
+            "capped": false,
+            "score": 100
+          },
+          "novelty": {
+            "score": 100,
+            "ageDays": 25,
+            "firstSeenAt": "2026-08-09T00:00:00.000Z"
+          },
+          "aggregate": {
+            "c7": 2.5,
+            "c7prev": 0.8333333333333333,
+            "c30": 5.499999999999999,
+            "c30prev": 4.333333333333333,
+            "S": 4,
+            "S_TOTAL": 4,
+            "unitsBySource": {
+              "hn": {
+                "7d": 0.3333333333333333,
+                "prev7d": 0,
+                "30d": 0.6666666666666666,
+                "prev30d": 0.3333333333333333
+              },
+              "github": {
+                "7d": 0.5,
+                "prev7d": 0.5,
+                "30d": 1.5,
+                "prev30d": 1
+              },
+              "arxiv": {
+                "7d": 1,
+                "prev7d": 0,
+                "30d": 2,
+                "prev30d": 2
+              },
+              "openalex": {
+                "7d": 0.6666666666666666,
+                "prev7d": 0.3333333333333333,
+                "30d": 1.3333333333333333,
+                "prev30d": 1
+              }
+            },
+            "rawBySource": {
+              "hn": {
+                "7d": 1,
+                "prev7d": 0,
+                "30d": 2,
+                "prev30d": 1
+              },
+              "github": {
+                "7d": 1,
+                "prev7d": 1,
+                "30d": 3,
+                "prev30d": 2
+              },
+              "arxiv": {
+                "7d": 1,
+                "prev7d": 0,
+                "30d": 2,
+                "prev30d": 2
+              },
+              "openalex": {
+                "7d": 2,
+                "prev7d": 1,
+                "30d": 4,
+                "prev30d": 3
+              }
+            }
+          }
+        }
+      },
+      "domains": [
+        {
+          "domain": "latentrag.com",
+          "generationRule": "abbrev",
+          "domainScore": 92,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 80,
+          "opportunityBreakdown": {
+            "trend": 60,
+            "domain": 92,
+            "japanGap": 100,
+            "novelty": 100,
+            "base": 80,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 80
+          }
+        },
+        {
+          "domain": "latentretrieval.com",
+          "generationRule": "concat",
+          "domainScore": 86,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 79,
+          "opportunityBreakdown": {
+            "trend": 60,
+            "domain": 86,
+            "japanGap": 100,
+            "novelty": 100,
+            "base": 78.5,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 79
+          }
+        },
+        {
+          "domain": "retrievallatent.com",
+          "generationRule": "reorder",
+          "domainScore": 79,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 77,
+          "opportunityBreakdown": {
+            "trend": 60,
+            "domain": 79,
+            "japanGap": 100,
+            "novelty": 100,
+            "base": 76.75,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 77
+          }
+        },
+        {
+          "domain": "latentretrievalhq.com",
+          "generationRule": "suffix",
+          "domainScore": 77,
+          "trademarkFlag": null,
+          "availability": "taken",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "latentretrievalai.com",
+          "generationRule": "suffix",
+          "domainScore": 75,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 76,
+          "opportunityBreakdown": {
+            "trend": 60,
+            "domain": 75,
+            "japanGap": 100,
+            "novelty": 100,
+            "base": 75.75,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 76
+          }
+        },
+        {
+          "domain": "latentretrievalhub.com",
+          "generationRule": "suffix",
+          "domainScore": 73,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 75,
+          "opportunityBreakdown": {
+            "trend": 60,
+            "domain": 73,
+            "japanGap": 100,
+            "novelty": 100,
+            "base": 75.25,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 75
+          }
+        },
+        {
+          "domain": "latentretrievallabs.com",
+          "generationRule": "suffix",
+          "domainScore": 68,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 74,
+          "opportunityBreakdown": {
+            "trend": 60,
+            "domain": 68,
+            "japanGap": 100,
+            "novelty": 100,
+            "base": 74,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 74
+          }
+        }
+      ],
+      "fallbackOpportunity": null,
+      "_order": 3
+    },
+    {
+      "keyword": "ambient agents",
+      "slug": "ambient-agents",
+      "description": "常時走り続けて、必要なときだけ人に話しかけるエージェントの形。",
+      "whyEmerging": "30 日件数が 4 桁規模で、日本語圏でも解説記事が増えている。ドメインとしては手遅れの帯。",
+      "firstSeenContext": "Ambient agents are the next interface（HN・2026-08-31）",
+      "relatedTerms": [
+        "background agents",
+        "always-on assistant",
+        "agent inbox"
+      ],
+      "extractionMethod": "ngram+llm:anthropic",
+      "llmConfidence": 0.81,
+      "llmBasis": "confirmed",
+      "firstSeenAt": "2025-11-07T00:00:00.000Z",
+      "metrics": [
+        {
+          "source": "hn",
+          "window": "7d",
+          "count": 60,
+          "approximate": true,
+          "queryUrl": "https://hn.algolia.com/?q=%22ambient%20agents%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "prev7d",
+          "count": 50,
+          "approximate": true,
+          "queryUrl": "https://hn.algolia.com/?q=%22ambient%20agents%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "30d",
+          "count": 240,
+          "approximate": true,
+          "queryUrl": "https://hn.algolia.com/?q=%22ambient%20agents%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "prev30d",
+          "count": 200,
+          "approximate": true,
+          "queryUrl": "https://hn.algolia.com/?q=%22ambient%20agents%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "7d",
+          "count": 200,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22ambient%20agents%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "prev7d",
+          "count": 180,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22ambient%20agents%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "30d",
+          "count": 700,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22ambient%20agents%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "prev30d",
+          "count": 650,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22ambient%20agents%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "7d",
+          "count": 20,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=ambient%20agents&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "prev7d",
+          "count": 18,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=ambient%20agents&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "30d",
+          "count": 70,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=ambient%20agents&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "prev30d",
+          "count": 60,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=ambient%20agents&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "7d",
+          "count": 300,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22ambient%20agents%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "prev7d",
+          "count": 280,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22ambient%20agents%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "30d",
+          "count": 1100,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22ambient%20agents%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "prev30d",
+          "count": 1000,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22ambient%20agents%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "qiita",
+          "window": "30d",
+          "count": 420,
+          "approximate": false,
+          "queryUrl": "https://qiita.com/search?q=ambient%20agents",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "qiita",
+          "window": "prev30d",
+          "count": 380,
+          "approximate": false,
+          "queryUrl": "https://qiita.com/search?q=ambient%20agents",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "wikipv",
+          "window": "30d",
+          "count": 2400,
+          "approximate": false,
+          "queryUrl": "https://ja.wikipedia.org/w/index.php?search=ambient%20agents",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        }
+      ],
+      "scores": {
+        "trendScore": 26,
+        "noveltyScore": 35,
+        "japanGapScore": 40,
+        "status": "Mainstream",
+        "fading": false,
+        "breadth": 4,
+        "c30Units": 866.667,
+        "g7": 1.0995,
+        "g30": 1.1036,
+        "breakdown": {
+          "trend": {
+            "G": 4.514381169918795,
+            "growthRaw": 4.563664807144982,
+            "shrinkage": 0.9892008639308856,
+            "g": 1.0995475113122173,
+            "A": 18.681318681318658,
+            "a": 1.1868131868131866,
+            "B": 100,
+            "V": 2.069072757029211,
+            "weighted": 25.833565334992613,
+            "gates": [],
+            "trendScore": 26
+          },
+          "japanGap": {
+            "jpUnits": 520,
+            "enUnits": 866.6666666666667,
+            "qiitaUnits": 420,
+            "wikiUnits": 100,
+            "capped": false,
+            "score": 40
+          },
+          "novelty": {
+            "score": 35,
+            "ageDays": 300,
+            "firstSeenAt": "2025-11-07T00:00:00.000Z"
+          },
+          "aggregate": {
+            "c7": 240,
+            "c7prev": 218,
+            "c30": 866.6666666666667,
+            "c30prev": 785,
+            "S": 4,
+            "S_TOTAL": 4,
+            "unitsBySource": {
+              "hn": {
+                "7d": 20,
+                "prev7d": 16.666666666666668,
+                "30d": 80,
+                "prev30d": 66.66666666666667
+              },
+              "github": {
+                "7d": 100,
+                "prev7d": 90,
+                "30d": 350,
+                "prev30d": 325
+              },
+              "arxiv": {
+                "7d": 20,
+                "prev7d": 18,
+                "30d": 70,
+                "prev30d": 60
+              },
+              "openalex": {
+                "7d": 100,
+                "prev7d": 93.33333333333333,
+                "30d": 366.6666666666667,
+                "prev30d": 333.3333333333333
+              }
+            },
+            "rawBySource": {
+              "hn": {
+                "7d": 60,
+                "prev7d": 50,
+                "30d": 240,
+                "prev30d": 200
+              },
+              "github": {
+                "7d": 200,
+                "prev7d": 180,
+                "30d": 700,
+                "prev30d": 650
+              },
+              "arxiv": {
+                "7d": 20,
+                "prev7d": 18,
+                "30d": 70,
+                "prev30d": 60
+              },
+              "openalex": {
+                "7d": 300,
+                "prev7d": 280,
+                "30d": 1100,
+                "prev30d": 1000
+              }
+            }
+          }
+        }
+      },
+      "domains": [
+        {
+          "domain": "ambientagents.com",
+          "generationRule": "concat",
+          "domainScore": 92,
+          "trademarkFlag": null,
+          "availability": "taken",
+          "availabilitySource": "dns",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "agentsambient.com",
+          "generationRule": "reorder",
+          "domainScore": 88,
+          "trademarkFlag": null,
+          "availability": "taken",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "ambientagentsai.com",
+          "generationRule": "suffix",
+          "domainScore": 81,
+          "trademarkFlag": null,
+          "availability": "taken",
+          "availabilitySource": "dns",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "ambientagentshq.com",
+          "generationRule": "suffix",
+          "domainScore": 76,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 12,
+          "opportunityBreakdown": {
+            "trend": 26,
+            "domain": 76,
+            "japanGap": 40,
+            "novelty": 35,
+            "base": 41.95,
+            "mainstreamPenalty": 30,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 12
+          }
+        },
+        {
+          "domain": "ambientagentshub.com",
+          "generationRule": "suffix",
+          "domainScore": 76,
+          "trademarkFlag": null,
+          "availability": "taken",
+          "availabilitySource": "dns",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "ambientagentslabs.com",
+          "generationRule": "suffix",
+          "domainScore": 74,
+          "trademarkFlag": null,
+          "availability": "unknown",
+          "availabilitySource": "budget",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        }
+      ],
+      "fallbackOpportunity": null,
+      "_order": 4
+    },
+    {
+      "keyword": "durable execution",
+      "slug": "durable-execution",
+      "description": "途中で落ちても再開できる実行モデル。ワークフローエンジン系の語。",
+      "whyEmerging": "30 日件数は多いが前 30 日の 0.33 倍まで落ちている（fading）。ピークは過ぎた。",
+      "firstSeenContext": "Durable execution patterns, revisited（HN・2026-08-26）",
+      "relatedTerms": [
+        "workflow engine",
+        "exactly once",
+        "saga pattern",
+        "checkpointing"
+      ],
+      "extractionMethod": "ngram",
+      "llmConfidence": null,
+      "llmBasis": null,
+      "firstSeenAt": "2025-07-10T00:00:00.000Z",
+      "metrics": [
+        {
+          "source": "hn",
+          "window": "7d",
+          "count": 10,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22durable%20execution%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "prev7d",
+          "count": 30,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22durable%20execution%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "30d",
+          "count": 60,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22durable%20execution%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "prev30d",
+          "count": 200,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22durable%20execution%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "7d",
+          "count": 30,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22durable%20execution%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "prev7d",
+          "count": 60,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22durable%20execution%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "30d",
+          "count": 120,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22durable%20execution%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "prev30d",
+          "count": 350,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22durable%20execution%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "7d",
+          "count": 3,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=durable%20execution&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "prev7d",
+          "count": 8,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=durable%20execution&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "30d",
+          "count": 12,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=durable%20execution&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "prev30d",
+          "count": 40,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=durable%20execution&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "7d",
+          "count": 30,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22durable%20execution%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "prev7d",
+          "count": 70,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22durable%20execution%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "30d",
+          "count": 150,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22durable%20execution%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "prev30d",
+          "count": 450,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22durable%20execution%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "qiita",
+          "window": "30d",
+          "count": 55,
+          "approximate": false,
+          "queryUrl": "https://qiita.com/search?q=durable%20execution",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "qiita",
+          "window": "prev30d",
+          "count": 70,
+          "approximate": false,
+          "queryUrl": "https://qiita.com/search?q=durable%20execution",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "wikipv",
+          "window": "30d",
+          "count": 0,
+          "approximate": false,
+          "queryUrl": "https://ja.wikipedia.org/w/index.php?search=durable%20execution",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        }
+      ],
+      "scores": {
+        "trendScore": 27,
+        "noveltyScore": 10,
+        "japanGapScore": 61,
+        "status": "Trending",
+        "fading": true,
+        "breadth": 4,
+        "c30Units": 142,
+        "g7": 0.4619,
+        "g30": 0.3336,
+        "breakdown": {
+          "trend": {
+            "G": 0,
+            "growthRaw": 0,
+            "shrinkage": 0.9535603715170279,
+            "g": 0.4618834080717488,
+            "A": 0,
+            "a": 0.9456740442655935,
+            "B": 100,
+            "V": 28.165859278742378,
+            "weighted": 27.041464819685594,
+            "gates": [],
+            "trendScore": 27
+          },
+          "japanGap": {
+            "jpUnits": 55,
+            "enUnits": 142,
+            "qiitaUnits": 55,
+            "wikiUnits": 0,
+            "capped": false,
+            "score": 61
+          },
+          "novelty": {
+            "score": 10,
+            "ageDays": 420,
+            "firstSeenAt": "2025-07-10T00:00:00.000Z"
+          },
+          "aggregate": {
+            "c7": 31.333333333333332,
+            "c7prev": 71.33333333333333,
+            "c30": 142,
+            "c30prev": 431.6666666666667,
+            "S": 4,
+            "S_TOTAL": 4,
+            "unitsBySource": {
+              "hn": {
+                "7d": 3.3333333333333335,
+                "prev7d": 10,
+                "30d": 20,
+                "prev30d": 66.66666666666667
+              },
+              "github": {
+                "7d": 15,
+                "prev7d": 30,
+                "30d": 60,
+                "prev30d": 175
+              },
+              "arxiv": {
+                "7d": 3,
+                "prev7d": 8,
+                "30d": 12,
+                "prev30d": 40
+              },
+              "openalex": {
+                "7d": 10,
+                "prev7d": 23.333333333333332,
+                "30d": 50,
+                "prev30d": 150
+              }
+            },
+            "rawBySource": {
+              "hn": {
+                "7d": 10,
+                "prev7d": 30,
+                "30d": 60,
+                "prev30d": 200
+              },
+              "github": {
+                "7d": 30,
+                "prev7d": 60,
+                "30d": 120,
+                "prev30d": 350
+              },
+              "arxiv": {
+                "7d": 3,
+                "prev7d": 8,
+                "30d": 12,
+                "prev30d": 40
+              },
+              "openalex": {
+                "7d": 30,
+                "prev7d": 70,
+                "30d": 150,
+                "prev30d": 450
+              }
+            }
+          }
+        }
+      },
+      "domains": [
+        {
+          "domain": "durableexecution.com",
+          "generationRule": "concat",
+          "domainScore": 77,
+          "trademarkFlag": null,
+          "availability": "taken",
+          "availabilitySource": "dns",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "executiondurable.com",
+          "generationRule": "reorder",
+          "domainScore": 73,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": null,
+          "renewalPrice": null,
+          "currency": null,
+          "premium": "standard_inferred",
+          "priceSource": null,
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 21,
+          "opportunityBreakdown": {
+            "trend": 27,
+            "domain": 73,
+            "japanGap": 61,
+            "novelty": 10,
+            "base": 41.05,
+            "mainstreamPenalty": 10,
+            "fadingPenalty": 10,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 21
+          }
+        },
+        {
+          "domain": "durableexecutionhq.com",
+          "generationRule": "suffix",
+          "domainScore": 68,
+          "trademarkFlag": null,
+          "availability": "unknown",
+          "availabilitySource": "budget",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "durableexecutionai.com",
+          "generationRule": "suffix",
+          "domainScore": 64,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 19,
+          "opportunityBreakdown": {
+            "trend": 27,
+            "domain": 64,
+            "japanGap": 61,
+            "novelty": 10,
+            "base": 38.8,
+            "mainstreamPenalty": 10,
+            "fadingPenalty": 10,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 19
+          }
+        },
+        {
+          "domain": "durableexecutionhub.com",
+          "generationRule": "suffix",
+          "domainScore": 64,
+          "trademarkFlag": null,
+          "availability": "taken",
+          "availabilitySource": "dns",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "durableexecutionlabs.com",
+          "generationRule": "suffix",
+          "domainScore": 62,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 18,
+          "opportunityBreakdown": {
+            "trend": 27,
+            "domain": 62,
+            "japanGap": 61,
+            "novelty": 10,
+            "base": 38.3,
+            "mainstreamPenalty": 10,
+            "fadingPenalty": 10,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 18
+          }
+        }
+      ],
+      "fallbackOpportunity": null,
+      "_order": 5
+    },
+    {
+      "keyword": "vibe coding",
+      "slug": "vibe-coding",
+      "description": "仕様よりも生成と手直しの往復で書き進める開発の呼び方。",
+      "whyEmerging": "英語圏でも日本語圏でも記事が多く、日本語版 Wikipedia にも項目がある。Japan Gap は上限 40 で止まる。",
+      "firstSeenContext": "Vibe coding a compiler in a weekend（HN・2026-09-01）",
+      "relatedTerms": [
+        "ai pair programming",
+        "agentic coding",
+        "prompt driven development"
+      ],
+      "extractionMethod": "ngram+llm:anthropic",
+      "llmConfidence": 0.9,
+      "llmBasis": "confirmed",
+      "firstSeenAt": "2025-04-01T00:00:00.000Z",
+      "metrics": [
+        {
+          "source": "hn",
+          "window": "7d",
+          "count": 40,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22vibe%20coding%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "prev7d",
+          "count": 35,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22vibe%20coding%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "30d",
+          "count": 160,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22vibe%20coding%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "prev30d",
+          "count": 130,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22vibe%20coding%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "7d",
+          "count": 60,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22vibe%20coding%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "prev7d",
+          "count": 55,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22vibe%20coding%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "30d",
+          "count": 210,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22vibe%20coding%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "prev30d",
+          "count": 180,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22vibe%20coding%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "7d",
+          "count": 4,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=vibe%20coding&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "prev7d",
+          "count": 3,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=vibe%20coding&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "30d",
+          "count": 14,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=vibe%20coding&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "prev30d",
+          "count": 10,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=vibe%20coding&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "7d",
+          "count": 30,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22vibe%20coding%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "prev7d",
+          "count": 25,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22vibe%20coding%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "30d",
+          "count": 110,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22vibe%20coding%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "prev30d",
+          "count": 90,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22vibe%20coding%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "qiita",
+          "window": "30d",
+          "count": 96,
+          "approximate": false,
+          "queryUrl": "https://qiita.com/search?q=vibe%20coding",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "qiita",
+          "window": "prev30d",
+          "count": 80,
+          "approximate": false,
+          "queryUrl": "https://qiita.com/search?q=vibe%20coding",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "wikipv",
+          "window": "30d",
+          "count": 1810,
+          "approximate": false,
+          "queryUrl": "https://ja.wikipedia.org/w/index.php?search=vibe%20coding",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        }
+      ],
+      "scores": {
+        "trendScore": 31,
+        "noveltyScore": 10,
+        "japanGapScore": 16,
+        "status": "Trending",
+        "fading": false,
+        "breadth": 4,
+        "c30Units": 209,
+        "g7": 1.1277,
+        "g30": 1.2023,
+        "breakdown": {
+          "trend": {
+            "G": 5.524392455672272,
+            "growthRaw": 5.7805466653634126,
+            "shrinkage": 0.9556868537666174,
+            "g": 1.1277258566978194,
+            "A": 17.566643882433365,
+            "a": 1.1756664388243336,
+            "B": 100,
+            "V": 22.603888811820582,
+            "weighted": 31.09783833892711,
+            "gates": [],
+            "trendScore": 31
+          },
+          "japanGap": {
+            "jpUnits": 176.33333333333334,
+            "enUnits": 209,
+            "qiitaUnits": 96,
+            "wikiUnits": 80.33333333333334,
+            "capped": false,
+            "score": 16
+          },
+          "novelty": {
+            "score": 10,
+            "ageDays": 520,
+            "firstSeenAt": "2025-04-01T00:00:00.000Z"
+          },
+          "aggregate": {
+            "c7": 57.333333333333336,
+            "c7prev": 50.5,
+            "c30": 209,
+            "c30prev": 173.33333333333334,
+            "S": 4,
+            "S_TOTAL": 4,
+            "unitsBySource": {
+              "hn": {
+                "7d": 13.333333333333334,
+                "prev7d": 11.666666666666666,
+                "30d": 53.333333333333336,
+                "prev30d": 43.333333333333336
+              },
+              "github": {
+                "7d": 30,
+                "prev7d": 27.5,
+                "30d": 105,
+                "prev30d": 90
+              },
+              "arxiv": {
+                "7d": 4,
+                "prev7d": 3,
+                "30d": 14,
+                "prev30d": 10
+              },
+              "openalex": {
+                "7d": 10,
+                "prev7d": 8.333333333333334,
+                "30d": 36.666666666666664,
+                "prev30d": 30
+              }
+            },
+            "rawBySource": {
+              "hn": {
+                "7d": 40,
+                "prev7d": 35,
+                "30d": 160,
+                "prev30d": 130
+              },
+              "github": {
+                "7d": 60,
+                "prev7d": 55,
+                "30d": 210,
+                "prev30d": 180
+              },
+              "arxiv": {
+                "7d": 4,
+                "prev7d": 3,
+                "30d": 14,
+                "prev30d": 10
+              },
+              "openalex": {
+                "7d": 30,
+                "prev7d": 25,
+                "30d": 110,
+                "prev30d": 90
+              }
+            }
+          }
+        }
+      },
+      "domains": [
+        {
+          "domain": "vibecoding.com",
+          "generationRule": "concat",
+          "domainScore": 97,
+          "trademarkFlag": null,
+          "availability": "taken",
+          "availabilitySource": "dns",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "codingvibe.com",
+          "generationRule": "reorder",
+          "domainScore": 93,
+          "trademarkFlag": null,
+          "availability": "taken",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "vibecodingai.com",
+          "generationRule": "suffix",
+          "domainScore": 86,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 29,
+          "opportunityBreakdown": {
+            "trend": 31,
+            "domain": 86,
+            "japanGap": 16,
+            "novelty": 10,
+            "base": 39.35,
+            "mainstreamPenalty": 10,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 29
+          }
+        },
+        {
+          "domain": "getvibecoding.com",
+          "generationRule": "prefix",
+          "domainScore": 85,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 29,
+          "opportunityBreakdown": {
+            "trend": 31,
+            "domain": 85,
+            "japanGap": 16,
+            "novelty": 10,
+            "base": 39.1,
+            "mainstreamPenalty": 10,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 29
+          }
+        },
+        {
+          "domain": "tryvibecoding.com",
+          "generationRule": "prefix",
+          "domainScore": 85,
+          "trademarkFlag": null,
+          "availability": "taken",
+          "availabilitySource": "dns",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "vibecodinglabs.com",
+          "generationRule": "suffix",
+          "domainScore": 83,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 29,
+          "opportunityBreakdown": {
+            "trend": 31,
+            "domain": 83,
+            "japanGap": 16,
+            "novelty": 10,
+            "base": 38.6,
+            "mainstreamPenalty": 10,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 29
+          }
+        },
+        {
+          "domain": "vibecodinghq.com",
+          "generationRule": "suffix",
+          "domainScore": 82,
+          "trademarkFlag": null,
+          "availability": "unknown",
+          "availabilitySource": "budget",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "usevibecoding.com",
+          "generationRule": "prefix",
+          "domainScore": 82,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 28,
+          "opportunityBreakdown": {
+            "trend": 31,
+            "domain": 82,
+            "japanGap": 16,
+            "novelty": 10,
+            "base": 38.35,
+            "mainstreamPenalty": 10,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 28
+          }
+        },
+        {
+          "domain": "vibecodinghub.com",
+          "generationRule": "suffix",
+          "domainScore": 82,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 28,
+          "opportunityBreakdown": {
+            "trend": 31,
+            "domain": 82,
+            "japanGap": 16,
+            "novelty": 10,
+            "base": 38.35,
+            "mainstreamPenalty": 10,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 28
+          }
+        }
+      ],
+      "fallbackOpportunity": null,
+      "_order": 6
+    },
+    {
+      "keyword": "sovereign compute",
+      "slug": "sovereign-compute",
+      "description": "自国・自組織の管理下に置いた計算資源。規制対応の文脈で出てくる。",
+      "whyEmerging": "3 ソースで 30 日件数が前 30 日の 1.6 倍。日本語圏の計測はこのランでは失敗している（Japan Gap は出さない）。",
+      "firstSeenContext": "Sovereign compute is getting cheaper（HN・2026-08-30）",
+      "relatedTerms": [
+        "data residency",
+        "on-premise ai",
+        "gpu sovereignty"
+      ],
+      "extractionMethod": "ngram",
+      "llmConfidence": null,
+      "llmBasis": null,
+      "firstSeenAt": "2026-05-31T00:00:00.000Z",
+      "metrics": [
+        {
+          "source": "hn",
+          "window": "7d",
+          "count": 4,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22sovereign%20compute%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "prev7d",
+          "count": 2,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22sovereign%20compute%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "30d",
+          "count": 12,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22sovereign%20compute%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "prev30d",
+          "count": 6,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22sovereign%20compute%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "7d",
+          "count": 6,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22sovereign%20compute%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "prev7d",
+          "count": 4,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22sovereign%20compute%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "30d",
+          "count": 18,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22sovereign%20compute%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "prev30d",
+          "count": 10,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22sovereign%20compute%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "7d",
+          "count": 1,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=sovereign%20compute&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "prev7d",
+          "count": 1,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=sovereign%20compute&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "30d",
+          "count": 4,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=sovereign%20compute&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "prev30d",
+          "count": 3,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=sovereign%20compute&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "7d",
+          "count": 8,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22sovereign%20compute%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "prev7d",
+          "count": 5,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22sovereign%20compute%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "30d",
+          "count": 22,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22sovereign%20compute%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "prev30d",
+          "count": 13,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22sovereign%20compute%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        }
+      ],
+      "scores": {
+        "trendScore": 45,
+        "noveltyScore": 60,
+        "japanGapScore": null,
+        "status": "Emerging",
+        "fading": false,
+        "breadth": 4,
+        "c30Units": 24.333,
+        "g7": 1.32,
+        "g30": 1.5769,
+        "breakdown": {
+          "trend": {
+            "G": 9.710010414151007,
+            "growthRaw": 13.351264319457634,
+            "shrinkage": 0.7272727272727273,
+            "g": 1.3200000000000003,
+            "A": 40.90019569471623,
+            "a": 1.4090019569471623,
+            "B": 100,
+            "V": 53.21702455998039,
+            "weighted": 44.882798923891194,
+            "gates": [],
+            "trendScore": 45
+          },
+          "japanGap": {
+            "jpUnits": 0,
+            "enUnits": 24.333333333333332,
+            "qiitaUnits": 0,
+            "wikiUnits": 0,
+            "capped": false,
+            "score": null
+          },
+          "novelty": {
+            "score": 60,
+            "ageDays": 95,
+            "firstSeenAt": "2026-05-31T00:00:00.000Z"
+          },
+          "aggregate": {
+            "c7": 8,
+            "c7prev": 5.333333333333333,
+            "c30": 24.333333333333332,
+            "c30prev": 14.333333333333332,
+            "S": 4,
+            "S_TOTAL": 4,
+            "unitsBySource": {
+              "hn": {
+                "7d": 1.3333333333333333,
+                "prev7d": 0.6666666666666666,
+                "30d": 4,
+                "prev30d": 2
+              },
+              "github": {
+                "7d": 3,
+                "prev7d": 2,
+                "30d": 9,
+                "prev30d": 5
+              },
+              "arxiv": {
+                "7d": 1,
+                "prev7d": 1,
+                "30d": 4,
+                "prev30d": 3
+              },
+              "openalex": {
+                "7d": 2.6666666666666665,
+                "prev7d": 1.6666666666666667,
+                "30d": 7.333333333333333,
+                "prev30d": 4.333333333333333
+              }
+            },
+            "rawBySource": {
+              "hn": {
+                "7d": 4,
+                "prev7d": 2,
+                "30d": 12,
+                "prev30d": 6
+              },
+              "github": {
+                "7d": 6,
+                "prev7d": 4,
+                "30d": 18,
+                "prev30d": 10
+              },
+              "arxiv": {
+                "7d": 1,
+                "prev7d": 1,
+                "30d": 4,
+                "prev30d": 3
+              },
+              "openalex": {
+                "7d": 8,
+                "prev7d": 5,
+                "30d": 22,
+                "prev30d": 13
+              }
+            }
+          }
+        }
+      },
+      "domains": [
+        {
+          "domain": "sovereigncompute.com",
+          "generationRule": "concat",
+          "domainScore": 82,
+          "trademarkFlag": null,
+          "availability": "taken",
+          "availabilitySource": "dns",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "computesovereign.com",
+          "generationRule": "reorder",
+          "domainScore": 77,
+          "trademarkFlag": null,
+          "availability": "taken",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "sovereigncomputeai.com",
+          "generationRule": "suffix",
+          "domainScore": 73,
+          "trademarkFlag": null,
+          "availability": "taken",
+          "availabilitySource": "dns",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "sovereigncomputehq.com",
+          "generationRule": "suffix",
+          "domainScore": 73,
+          "trademarkFlag": null,
+          "availability": "taken",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "sovereigncomputehub.com",
+          "generationRule": "suffix",
+          "domainScore": 69,
+          "trademarkFlag": null,
+          "availability": "unknown",
+          "availabilitySource": "budget",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "sovereigncomputelabs.com",
+          "generationRule": "suffix",
+          "domainScore": 67,
+          "trademarkFlag": null,
+          "availability": "taken",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        }
+      ],
+      "fallbackOpportunity": {
+        "trend": 45,
+        "domain": 0,
+        "japanGap": 50,
+        "novelty": 60,
+        "base": 36.75,
+        "mainstreamPenalty": 0,
+        "fadingPenalty": 0,
+        "trademarkRisk": 0,
+        "pricePenalty": 0,
+        "noAvailableFactorApplied": true,
+        "score": 22
+      },
+      "_order": 7
+    },
+    {
+      "keyword": "semantic caching",
+      "slug": "semantic-caching",
+      "description": "同じ意味の問い合わせに同じ応答を返して呼び出しを減らす仕組み。",
+      "whyEmerging": "30 日件数が前 30 日の 1.8 倍。GitHub のミドルウェア実装が増えている。",
+      "firstSeenContext": "Semantic caching cut our bill by 60%（HN・2026-08-28）",
+      "relatedTerms": [
+        "response cache",
+        "embedding cache",
+        "prompt cache"
+      ],
+      "extractionMethod": "ngram+llm:anthropic",
+      "llmConfidence": 0.58,
+      "llmBasis": "inferred",
+      "firstSeenAt": "2026-07-07T00:00:00.000Z",
+      "metrics": [
+        {
+          "source": "hn",
+          "window": "7d",
+          "count": 6,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22semantic%20caching%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "prev7d",
+          "count": 3,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22semantic%20caching%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "30d",
+          "count": 18,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22semantic%20caching%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "prev30d",
+          "count": 8,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22semantic%20caching%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "7d",
+          "count": 14,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22semantic%20caching%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "prev7d",
+          "count": 8,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22semantic%20caching%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "30d",
+          "count": 44,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22semantic%20caching%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "prev30d",
+          "count": 22,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22semantic%20caching%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "7d",
+          "count": 2,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=semantic%20caching&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "prev7d",
+          "count": 1,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=semantic%20caching&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "30d",
+          "count": 6,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=semantic%20caching&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "prev30d",
+          "count": 4,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=semantic%20caching&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "7d",
+          "count": 12,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22semantic%20caching%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "prev7d",
+          "count": 7,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22semantic%20caching%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "30d",
+          "count": 34,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22semantic%20caching%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "prev30d",
+          "count": 18,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22semantic%20caching%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "qiita",
+          "window": "30d",
+          "count": 9,
+          "approximate": false,
+          "queryUrl": "https://qiita.com/search?q=semantic%20caching",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "qiita",
+          "window": "prev30d",
+          "count": 5,
+          "approximate": false,
+          "queryUrl": "https://qiita.com/search?q=semantic%20caching",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "wikipv",
+          "window": "30d",
+          "count": 0,
+          "approximate": false,
+          "queryUrl": "https://ja.wikipedia.org/w/index.php?search=semantic%20caching",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        }
+      ],
+      "scores": {
+        "trendScore": 46,
+        "noveltyScore": 85,
+        "japanGapScore": 80,
+        "status": "Rising",
+        "fading": false,
+        "breadth": 4,
+        "c30Units": 45.333,
+        "g7": 1.5882,
+        "g30": 1.8125,
+        "breakdown": {
+          "trend": {
+            "G": 18.321461279968247,
+            "growthRaw": 22.247488697104302,
+            "shrinkage": 0.8235294117647058,
+            "g": 1.588235294117647,
+            "A": 41.80672268907561,
+            "a": 1.4180672268907561,
+            "B": 100,
+            "V": 44.47824872946521,
+            "weighted": 45.89341816817031,
+            "gates": [],
+            "trendScore": 46
+          },
+          "japanGap": {
+            "jpUnits": 9,
+            "enUnits": 45.333333333333336,
+            "qiitaUnits": 9,
+            "wikiUnits": 0,
+            "capped": false,
+            "score": 80
+          },
+          "novelty": {
+            "score": 85,
+            "ageDays": 58,
+            "firstSeenAt": "2026-07-07T00:00:00.000Z"
+          },
+          "aggregate": {
+            "c7": 15,
+            "c7prev": 8.333333333333334,
+            "c30": 45.333333333333336,
+            "c30prev": 23.666666666666664,
+            "S": 4,
+            "S_TOTAL": 4,
+            "unitsBySource": {
+              "hn": {
+                "7d": 2,
+                "prev7d": 1,
+                "30d": 6,
+                "prev30d": 2.6666666666666665
+              },
+              "github": {
+                "7d": 7,
+                "prev7d": 4,
+                "30d": 22,
+                "prev30d": 11
+              },
+              "arxiv": {
+                "7d": 2,
+                "prev7d": 1,
+                "30d": 6,
+                "prev30d": 4
+              },
+              "openalex": {
+                "7d": 4,
+                "prev7d": 2.3333333333333335,
+                "30d": 11.333333333333334,
+                "prev30d": 6
+              }
+            },
+            "rawBySource": {
+              "hn": {
+                "7d": 6,
+                "prev7d": 3,
+                "30d": 18,
+                "prev30d": 8
+              },
+              "github": {
+                "7d": 14,
+                "prev7d": 8,
+                "30d": 44,
+                "prev30d": 22
+              },
+              "arxiv": {
+                "7d": 2,
+                "prev7d": 1,
+                "30d": 6,
+                "prev30d": 4
+              },
+              "openalex": {
+                "7d": 12,
+                "prev7d": 7,
+                "30d": 34,
+                "prev30d": 18
+              }
+            }
+          }
+        }
+      },
+      "domains": [
+        {
+          "domain": "semanticcaching.com",
+          "generationRule": "concat",
+          "domainScore": 83,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": null,
+          "renewalPrice": null,
+          "currency": null,
+          "premium": "standard_inferred",
+          "priceSource": null,
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 66,
+          "opportunityBreakdown": {
+            "trend": 46,
+            "domain": 83,
+            "japanGap": 80,
+            "novelty": 85,
+            "base": 66.2,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 66
+          }
+        },
+        {
+          "domain": "cachingsemantic.com",
+          "generationRule": "reorder",
+          "domainScore": 81,
+          "trademarkFlag": null,
+          "availability": "taken",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "semanticcachingai.com",
+          "generationRule": "suffix",
+          "domainScore": 72,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 63,
+          "opportunityBreakdown": {
+            "trend": 46,
+            "domain": 72,
+            "japanGap": 80,
+            "novelty": 85,
+            "base": 63.45,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 63
+          }
+        },
+        {
+          "domain": "semanticcachinghub.com",
+          "generationRule": "suffix",
+          "domainScore": 68,
+          "trademarkFlag": null,
+          "availability": "unknown",
+          "availabilitySource": "budget",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "semanticcachinghq.com",
+          "generationRule": "suffix",
+          "domainScore": 67,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": null,
+          "renewalPrice": null,
+          "currency": null,
+          "premium": "standard_inferred",
+          "priceSource": null,
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 62,
+          "opportunityBreakdown": {
+            "trend": 46,
+            "domain": 67,
+            "japanGap": 80,
+            "novelty": 85,
+            "base": 62.2,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 62
+          }
+        },
+        {
+          "domain": "semanticcachinglabs.com",
+          "generationRule": "suffix",
+          "domainScore": 67,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 62,
+          "opportunityBreakdown": {
+            "trend": 46,
+            "domain": 67,
+            "japanGap": 80,
+            "novelty": 85,
+            "base": 62.2,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 62
+          }
+        }
+      ],
+      "fallbackOpportunity": null,
+      "_order": 8
+    },
+    {
+      "keyword": "agent mesh",
+      "slug": "agent-mesh",
+      "description": "エージェントを 1 つのプロセスではなくネットワークとして並べ、役割ごとに横に繋ぐ構成の呼び方。",
+      "whyEmerging": "一度静かになったあと直近 7 日で 4 ソース同時に跳ねている。30 日の絶対数はまだ小さい（通知条件を満たす例）。",
+      "firstSeenContext": "Show HN: wiring five agents into a mesh（HN・2026-09-01）",
+      "relatedTerms": [
+        "multi agent",
+        "agent topology",
+        "agent router",
+        "service mesh"
+      ],
+      "extractionMethod": "ngram+llm:anthropic",
+      "llmConfidence": 0.69,
+      "llmBasis": "inferred",
+      "firstSeenAt": "2026-08-14T00:00:00.000Z",
+      "metrics": [
+        {
+          "source": "hn",
+          "window": "7d",
+          "count": 40,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22agent%20mesh%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "prev7d",
+          "count": 1,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22agent%20mesh%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "30d",
+          "count": 44,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22agent%20mesh%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "hn",
+          "window": "prev30d",
+          "count": 12,
+          "approximate": false,
+          "queryUrl": "https://hn.algolia.com/?q=%22agent%20mesh%22&dateRange=pastMonth&type=all",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "7d",
+          "count": 30,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22agent%20mesh%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "prev7d",
+          "count": 1,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22agent%20mesh%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "30d",
+          "count": 36,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22agent%20mesh%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "github",
+          "window": "prev30d",
+          "count": 16,
+          "approximate": false,
+          "queryUrl": "https://github.com/search?q=%22agent%20mesh%22&type=repositories&s=updated&o=desc",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "7d",
+          "count": 10,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=agent%20mesh&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "prev7d",
+          "count": 0,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=agent%20mesh&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "30d",
+          "count": 11,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=agent%20mesh&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "arxiv",
+          "window": "prev30d",
+          "count": 4,
+          "approximate": false,
+          "queryUrl": "https://arxiv.org/search/?query=agent%20mesh&searchtype=all&order=-announced_date_first",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "7d",
+          "count": 40,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22agent%20mesh%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "prev7d",
+          "count": 2,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22agent%20mesh%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "30d",
+          "count": 46,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22agent%20mesh%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "openalex",
+          "window": "prev30d",
+          "count": 30,
+          "approximate": false,
+          "queryUrl": "https://openalex.org/works?filter=title_and_abstract.search:%22agent%20mesh%22",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "qiita",
+          "window": "30d",
+          "count": 1,
+          "approximate": false,
+          "queryUrl": "https://qiita.com/search?q=agent%20mesh",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "qiita",
+          "window": "prev30d",
+          "count": 0,
+          "approximate": false,
+          "queryUrl": "https://qiita.com/search?q=agent%20mesh",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "source": "wikipv",
+          "window": "30d",
+          "count": 0,
+          "approximate": false,
+          "queryUrl": "https://ja.wikipedia.org/w/index.php?search=agent%20mesh",
+          "fetchedAt": "2026-09-03T00:00:00.000Z"
+        }
+      ],
+      "scores": {
+        "trendScore": 82,
+        "noveltyScore": 100,
+        "japanGapScore": 98,
+        "status": "Rising",
+        "fading": false,
+        "breadth": 4,
+        "c30Units": 59,
+        "g7": 12.1481,
+        "g30": 2.1379,
+        "breakdown": {
+          "trend": {
+            "G": 91.40401146131806,
+            "growthRaw": 100,
+            "shrinkage": 0.9140401146131806,
+            "g": 12.148148148148149,
+            "A": 100,
+            "a": 3.753026634382567,
+            "B": 100,
+            "V": 40.73686658440173,
+            "weighted": 82.17562065756177,
+            "gates": [],
+            "trendScore": 82
+          },
+          "japanGap": {
+            "jpUnits": 1,
+            "enUnits": 59,
+            "qiitaUnits": 1,
+            "wikiUnits": 0,
+            "capped": false,
+            "score": 98
+          },
+          "novelty": {
+            "score": 100,
+            "ageDays": 20,
+            "firstSeenAt": "2026-08-14T00:00:00.000Z"
+          },
+          "aggregate": {
+            "c7": 51.66666666666667,
+            "c7prev": 1.5,
+            "c30": 59,
+            "c30prev": 26,
+            "S": 4,
+            "S_TOTAL": 4,
+            "unitsBySource": {
+              "hn": {
+                "7d": 13.333333333333334,
+                "prev7d": 0.3333333333333333,
+                "30d": 14.666666666666666,
+                "prev30d": 4
+              },
+              "github": {
+                "7d": 15,
+                "prev7d": 0.5,
+                "30d": 18,
+                "prev30d": 8
+              },
+              "arxiv": {
+                "7d": 10,
+                "prev7d": 0,
+                "30d": 11,
+                "prev30d": 4
+              },
+              "openalex": {
+                "7d": 13.333333333333334,
+                "prev7d": 0.6666666666666666,
+                "30d": 15.333333333333334,
+                "prev30d": 10
+              }
+            },
+            "rawBySource": {
+              "hn": {
+                "7d": 40,
+                "prev7d": 1,
+                "30d": 44,
+                "prev30d": 12
+              },
+              "github": {
+                "7d": 30,
+                "prev7d": 1,
+                "30d": 36,
+                "prev30d": 16
+              },
+              "arxiv": {
+                "7d": 10,
+                "prev7d": 0,
+                "30d": 11,
+                "prev30d": 4
+              },
+              "openalex": {
+                "7d": 40,
+                "prev7d": 2,
+                "30d": 46,
+                "prev30d": 30
+              }
+            }
+          }
+        }
+      },
+      "domains": [
+        {
+          "domain": "agentmesh.com",
+          "generationRule": "concat",
+          "domainScore": 99,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 91,
+          "opportunityBreakdown": {
+            "trend": 82,
+            "domain": 99,
+            "japanGap": 98,
+            "novelty": 100,
+            "base": 91.35,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 91
+          }
+        },
+        {
+          "domain": "meshagent.com",
+          "generationRule": "reorder",
+          "domainScore": 95,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 90,
+          "opportunityBreakdown": {
+            "trend": 82,
+            "domain": 95,
+            "japanGap": 98,
+            "novelty": 100,
+            "base": 90.35,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 90
+          }
+        },
+        {
+          "domain": "tryagentmesh.com",
+          "generationRule": "prefix",
+          "domainScore": 91,
+          "trademarkFlag": null,
+          "availability": "taken",
+          "availabilitySource": "dns",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "agentmeshai.com",
+          "generationRule": "suffix",
+          "domainScore": 90,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 89,
+          "opportunityBreakdown": {
+            "trend": 82,
+            "domain": 90,
+            "japanGap": 98,
+            "novelty": 100,
+            "base": 89.1,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 89
+          }
+        },
+        {
+          "domain": "getagentmesh.com",
+          "generationRule": "prefix",
+          "domainScore": 88,
+          "trademarkFlag": null,
+          "availability": "unknown",
+          "availabilitySource": "budget",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": null,
+          "opportunityBreakdown": null
+        },
+        {
+          "domain": "useagentmesh.com",
+          "generationRule": "prefix",
+          "domainScore": 88,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 89,
+          "opportunityBreakdown": {
+            "trend": 82,
+            "domain": 88,
+            "japanGap": 98,
+            "novelty": 100,
+            "base": 88.6,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 89
+          }
+        },
+        {
+          "domain": "agentmeshhub.com",
+          "generationRule": "suffix",
+          "domainScore": 86,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 88,
+          "opportunityBreakdown": {
+            "trend": 82,
+            "domain": 86,
+            "japanGap": 98,
+            "novelty": 100,
+            "base": 88.1,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 88
+          }
+        },
+        {
+          "domain": "agentmeshlabs.com",
+          "generationRule": "suffix",
+          "domainScore": 85,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 88,
+          "opportunityBreakdown": {
+            "trend": 82,
+            "domain": 85,
+            "japanGap": 98,
+            "novelty": 100,
+            "base": 87.85,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 88
+          }
+        },
+        {
+          "domain": "agentmeshhq.com",
+          "generationRule": "suffix",
+          "domainScore": 84,
+          "trademarkFlag": null,
+          "availability": "available",
+          "availabilitySource": "rdap",
+          "registrationPrice": 11.08,
+          "renewalPrice": 11.08,
+          "currency": "USD",
+          "premium": "standard_inferred",
+          "priceSource": "porkbun-pricing-get",
+          "checkedAt": "2026-09-03T00:00:00.000Z",
+          "opportunityScore": 88,
+          "opportunityBreakdown": {
+            "trend": 82,
+            "domain": 84,
+            "japanGap": 98,
+            "novelty": 100,
+            "base": 87.6,
+            "mainstreamPenalty": 0,
+            "fadingPenalty": 0,
+            "trademarkRisk": 0,
+            "pricePenalty": 0,
+            "noAvailableFactorApplied": false,
+            "score": 88
+          }
+        }
+      ],
+      "fallbackOpportunity": null,
+      "_order": 9
+    }
+  ]
+}

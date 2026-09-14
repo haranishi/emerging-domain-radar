@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <link href="http://arxiv.org/api/query" rel="self" type="application/atom+xml"/>
+  <title type="html">ArXiv Query: search_query=all:"context engineering"</title>
+  <id>http://arxiv.org/api/fixture-measure</id>
+  <updated>2026-09-03T12:00:00Z</updated>
+  <opensearch:totalResults xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">7</opensearch:totalResults>
+  <opensearch:startIndex xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">0</opensearch:startIndex>
+  <opensearch:itemsPerPage xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">200</opensearch:itemsPerPage>
+  <entry>
+    <id>http://arxiv.org/abs/2608.10000v1</id>
+    <updated>2026-09-01T12:00:00Z</updated>
+    <published>2026-09-01T12:00:00Z</published>
+    <title>Context engineering for long-horizon agents</title>
+    <summary>  We study context engineering for long-horizon agents and report empirical results.
+</summary>
+    <author><name>A. Researcher</name></author>
+    <link href="http://arxiv.org/abs/2608.10000v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2608.10000v1" rel="related" type="application/pdf"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.10001v1</id>
+    <updated>2026-08-29T12:00:00Z</updated>
+    <published>2026-08-29T12:00:00Z</published>
+    <title>A study of context engineering in retrieval pipelines</title>
+    <summary>  We study a study of context engineering in retrieval pipelines and report empirical results.
+</summary>
+    <author><name>A. Researcher</name></author>
+    <link href="http://arxiv.org/abs/2608.10001v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2608.10001v1" rel="related" type="application/pdf"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.10002v1</id>
+    <updated>2026-08-25T12:00:00Z</updated>
+    <published>2026-08-25T12:00:00Z</published>
+    <title>Context engineering and memory compaction</title>
+    <summary>  We study context engineering and memory compaction and report empirical results.
+</summary>
+    <author><name>A. Researcher</name></author>
+    <link href="http://arxiv.org/abs/2608.10002v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2608.10002v1" rel="related" type="application/pdf"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.10003v1</id>
+    <updated>2026-08-17T12:00:00Z</updated>
+    <published>2026-08-17T12:00:00Z</published>
+    <title>On context engineering budgets</title>
+    <summary>  We study on context engineering budgets and report empirical results.
+</summary>
+    <author><name>A. Researcher</name></author>
+    <link href="http://arxiv.org/abs/2608.10003v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2608.10003v1" rel="related" type="application/pdf"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.10004v1</id>
+    <updated>2026-08-08T12:00:00Z</updated>
+    <published>2026-08-08T12:00:00Z</published>
+    <title>Context engineering: an empirical comparison</title>
+    <summary>  We study context engineering: an empirical comparison and report empirical results.
+</summary>
+    <author><name>A. Researcher</name></author>
+    <link href="http://arxiv.org/abs/2608.10004v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2608.10004v1" rel="related" type="application/pdf"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.10005v1</id>
+    <updated>2026-07-24T12:00:00Z</updated>
+    <published>2026-07-24T12:00:00Z</published>
+    <title>Early notes on context engineering</title>
+    <summary>  We study early notes on context engineering and report empirical results.
+</summary>
+    <author><name>A. Researcher</name></author>
+    <link href="http://arxiv.org/abs/2608.10005v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2608.10005v1" rel="related" type="application/pdf"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.10006v1</id>
+    <updated>2026-07-10T12:00:00Z</updated>
+    <published>2026-07-10T12:00:00Z</published>
+    <title>Context windows and engineering tradeoffs</title>
+    <summary>  We study context windows and engineering tradeoffs and report empirical results.
+</summary>
+    <author><name>A. Researcher</name></author>
+    <link href="http://arxiv.org/abs/2608.10006v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2608.10006v1" rel="related" type="application/pdf"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+</feed>

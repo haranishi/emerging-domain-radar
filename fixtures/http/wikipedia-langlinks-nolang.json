@@ -1,0 +1,13 @@
+{
+  "batchcomplete": "",
+  "query": {
+    "normalized": [{ "from": "semantic caching", "to": "Semantic caching" }],
+    "pages": {
+      "68120994": {
+        "pageid": 68120994,
+        "ns": 0,
+        "title": "Semantic caching"
+      }
+    }
+  }
+}

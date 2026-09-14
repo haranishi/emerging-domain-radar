@@ -1,0 +1,38 @@
+{
+  "total_count": 4,
+  "incomplete_results": false,
+  "items": [
+    {
+      "id": 901001,
+      "full_name": "acme/context-engineering-kit",
+      "description": "Context engineering toolkit for agents",
+      "html_url": "https://github.com/acme/context-engineering-kit",
+      "created_at": "2026-08-30T12:00:00.000Z",
+      "stargazers_count": 412
+    },
+    {
+      "id": 901002,
+      "full_name": "labs/synthetic-memory",
+      "description": "Synthetic memory for long-lived agents",
+      "html_url": "https://github.com/labs/synthetic-memory",
+      "created_at": "2026-08-28T12:00:00.000Z",
+      "stargazers_count": 233
+    },
+    {
+      "id": 901003,
+      "full_name": "proto/agentic-protocol",
+      "description": "Reference implementation of the agentic protocol",
+      "html_url": "https://github.com/proto/agentic-protocol",
+      "created_at": "2026-08-25T12:00:00.000Z",
+      "stargazers_count": 158
+    },
+    {
+      "id": 901004,
+      "full_name": "edge/semantic-caching",
+      "description": "Semantic caching middleware for retrieval",
+      "html_url": "https://github.com/edge/semantic-caching",
+      "created_at": "2026-08-23T12:00:00.000Z",
+      "stargazers_count": 96
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "batchcomplete": "",
+  "query": {
+    "searchinfo": {
+      "totalhits": 1
+    },
+    "search": [
+      {
+        "ns": 0,
+        "title": "バイブコーディング",
+        "pageid": 5059134,
+        "size": 10240,
+        "wordcount": 1200,
+        "snippet": "…",
+        "timestamp": "2026-08-30T12:00:00.000Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "batchcomplete": "",
+  "query": {
+    "searchinfo": { "totalhits": 2 },
+    "search": [
+      { "ns": 0, "title": "Model Context Protocol", "pageid": 5091930, "size": 14336, "wordcount": 1500, "snippet": "…", "timestamp": "2026-08-25T10:51:35Z" },
+      { "ns": 0, "title": "MCP (プロトコル)", "pageid": 5091931, "size": 2048, "wordcount": 210, "snippet": "…", "timestamp": "2026-08-20T00:00:00Z" }
+    ]
+  }
+}
