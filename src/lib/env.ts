@@ -125,9 +125,9 @@ export function userAgent(): string {
 
 /*
  * Reference "now" for offline runs.
- * The fixtures are verbatim responses captured on 2026-09-03, so the window
- * maths has to use that date; otherwise every window is empty and the offline
- * result drifts day by day.
+ * Fixture dates are fixed for deterministic offline runs. Some fixtures use
+ * synthetic data; they are not all unmodified API responses. Keep the
+ * reference date fixed so window calculations do not drift day by day.
  */
 export const OFFLINE_REFERENCE_NOW = new Date('2026-09-03T00:00:00.000Z');
 
