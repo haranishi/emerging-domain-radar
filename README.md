@@ -66,6 +66,7 @@ npm run check:domains -- example.com    # ドメインを手で調べる（最�
 - **Premium 判定は推定。** `.com` にはレジストリの Premium 価格層が無いため `Standard (inferred)` を返す。予約語・ブロック名は区別できない。
 - **日本語圏の計測は取り逃す。** 英語フレーズと Wikipedia 由来の日本語訳でしか測れず、Wikipedia に記事の無い新語ほど訳が取れない。訳が不明なときは `JP equivalent unknown` と注記する。
 - **RDAP は総当たりしない。** Verisign の規約が大量の自動問い合わせを禁じている。DNS 事前フィルタ・`taken` の 7 日負のキャッシュ・日次予算（既定 300 件）の 3 段で必ず絞る。
+- 日次300件は本ツールの自主上限で、提供元が許可した件数ではありません。[Verisignの現行RDAP規約](https://www.verisign.com/legal-center/rdap-terms/)を確認し、必要性・頻度が条件に合わない場合は実データ収集を行わないでください。
 - **有料 API を前提にしない。** キーが無いときの挙動を全機能で定義してある。
 
 ## 商標の確認が必要です
@@ -98,3 +99,9 @@ npm run screenshots  # .tmp/shots/ に 10 枚。別ターミナルで dev か st
 - [docs/03_architecture.md](docs/03_architecture.md) — 実装契約。スコア式・DB スキーマ・環境変数
 - [docs/research.md](docs/research.md) — 調査 4 本の統合。採用/不採用の一覧と、踏んだ罠
 - 調査の原本 — [01 ドメイン API](docs/research/01_domain_apis.md)／[02 HN・GitHub・Reddit](docs/research/02_trend_sources_hn_github_reddit.md)／[03 論文・Trends・メディア](docs/research/03_trend_sources_papers_ph_trends_media.md)／[04 日本語圏・為替・方法論・商標](docs/research/04_japan_gap_fx_methodology_trademark.md)
+
+## ソース公開とライセンス
+
+自作コード・資料は [MIT License](LICENSE) です。外部ライブラリ、API由来のデータ、第三者の文章は各権利者の条件に従い、MITで再許諾しません。
+ソース公開は、収集結果の自由な再配布、商標の利用許諾、本番サービスとしての適法性を保証しません。
+APIを実行するときは、各提供元の最新の利用条件・アクセス上限を確認してください。実行ログ・DB・認証情報はリポジトリへ入れないでください。
