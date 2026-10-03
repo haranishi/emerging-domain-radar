@@ -50,7 +50,6 @@ export const RATE_LIMITS: Record<string, HostLimit> = {
   'data.iana.org': { ratePerSec: 1, burst: 1 },
   'api.porkbun.com': { ratePerSec: 1, burst: 1 },
   'api.frankfurter.dev': { ratePerSec: 1, burst: 1 },
-  'open.er-api.com': { ratePerSec: 1, burst: 1 },
 };
 
 const FALLBACK_LIMIT: HostLimit = { ratePerSec: 1, burst: 1 };

@@ -16,7 +16,7 @@
 5. トレンドは **HN Algolia・GitHub Search・arXiv・OpenAlex** の4本。いずれも1語1リクエストで期間内の件数が返る（02・03）。
 6. OpenAlex はキー無し **$0.10/日**の予算内で回す。`group_by` を付けると1件 **$0.0001**（検索価格の1/10）になる実測が決め手（03）。
 7. 日本語圏は **Qiita API v2**（`Total-Count` ヘッダ・未認証60 req/h）と **Wikipedia 日本語版**（Action APIで存在判定＋Pageviews API）（04）。
-8. 為替は **Frankfurter v2** の `expand=providers`。どの中央銀行の何日のレートを混ぜたかが応答に入るので、出典明記の要件をそのまま満たす。予備は open.er-api.com（04）。
+8. 為替は **Frankfurter v2** の `expand=providers`。提供元・日付を取得する。2026-10-03、再配布禁止のopen.er-api.comは予備候補から除外した（04）。取得失敗時はUSDのみ表示する。
 9. **商標の自動判定は不可能。** 無料で機械から叩ける検索APIが無く、WIPOは automated queries を明示的に禁止している。手動確認リンク＋免責表示までが上限（04）。
 10. 落とせないコンプライアンス要件が2つ。Verisign RDAP規約の「大量自動問い合わせ禁止」と、RDAPの404を「空き確定」と表示しないこと（01）。
 
@@ -37,7 +37,7 @@
 | 日本語圏（上陸判定） | Wikipedia 日本語版 Action API（`redirects=1`） | 記事の存在有無と初版日時で「日本語圏に上陸したか」を二値で確定できる。1リクエストで最大50タイトル | 無料 | 数値上限は未確認 | 不要（説明的UA必須） | [04 §1.4](research/04_japan_gap_fx_methodology_trademark.md) |
 | 日本語圏（関心量） | Wikimedia Pageviews API | 上陸後の関心量を日次PVで数値化。CORS `*`・4時間キャッシュを実測 | 無料 | 数値上限は未確認 | 不要（UAなしは403を実測） | [04 §1.4](research/04_japan_gap_fx_methodology_trademark.md) |
 | 為替 USD→JPY | Frankfurter v2 `api.frankfurter.dev`（`expand=providers`） | 各中央銀行のキー・日付・レートが応答に入り、出典明記の要件を満たす。`providers=ECB` でECB単独も選べる | 無料 | 公式に記載なし（未確認） | 不要 | [04 §2.3](research/04_japan_gap_fx_methodology_trademark.md) |
-| 為替（予備） | open.er-api.com `/v6/latest/USD` | `provider`・`time_last_update_utc`・`time_next_update_utc` を返す。CORS `*` | 無料（Openプラン） | 429で20分ブロック | 不要（**帰属表示リンク必須・再配布禁止**） | [04 §2.4](research/04_japan_gap_fx_methodology_trademark.md) |
+| 為替（不採用） | open.er-api.com | 2026-10-03に除外。画面の帰属表示に加え、レートの再配布も禁止されている | — | — | — | [04 §2.4](research/04_japan_gap_fx_methodology_trademark.md) |
 | LLMによる語抽出 | 任意。Anthropic API または ローカル Codex CLI。**既定は none** | 4本のレポートには記載がない。決定事項として記録する | — | — | Anthropic APIはキー要 | （レポート外） |
 
 スコアリングは外部APIではなくローカル実装。Trend Score は成長率・加速度・ソース数・絶対量の小ささの4成分の加重和、Status は絶対量と成長率の順序付きルール、Domain Score は7成分。式とコードは [04 §3・§5](research/04_japan_gap_fx_methodology_trademark.md) にある。
@@ -149,7 +149,7 @@ Read-only運用可否＝「読み取りだけのクレデンシャルを発行�
 - **商標の確認リンクは検索画面を開くだけで、結果が出ない場合がある。** USPTO・WIPO・EUIPO・TMviewはいずれもSPAで、キーワード付きURLが200を返してもHTML本文に検索語が現れない（USPTOは `q` の値を変えても同一の125,660バイト）。EUIPO/TMviewの `#` 以降はそもそもHTTPリクエストに含まれない。**ブラウザで実際に検索が走るかは未検証**。検索語のコピーボタンを併置する（04）。
 - **J-PlatPatはUser-Agent判定。** 同一URL `/t0100` が、curl既定UAでは `reject_sorry.html`（本文はメンテナンス告知）、ブラウザ相当UAでは `/?uri=/t0100` になる。キーワードの有無とは無関係。UAを偽装してまで叩かない。検索語をURLで渡す公式仕様も確認できない（04）。
 - **商標は文字列一致では判定できない。** 称呼・外観・観念の類似と、指定商品・役務の区分で決まる。未登録の著名商標や出願中の案件はデータベースに現れない。誤った「安全」表示は実害を出すので、「法的助言ではなく登録可能性の判定でもない」旨を常時表示する（04）。
-- **為替は参考値と明記する。** ECB自身が「Using the rates for transaction purposes is strongly discouraged」と述べている。Frankfurterは2026-09時点でECB専用ではなく84中央銀行のブレンドで、土日のレートも返る。予備の open.er-api.com を使う場合は帰属表示リンク（`Rates By Exchange Rate API`）が必須で、再配布は禁止（04）。
+- **為替は参考値と明記する。** Frankfurterのレートにも元データ提供元の条件が適用される。open.er-api.comは再配布禁止のため使用しない。帰属表示だけでは再配布の問題を解消しない（04）。
 - **`.com` 卸値の次回改定は準一次情報。** 2026-11-01に $10.26 → $10.97（約7%）とされるが、一次資料PDFの取得がHTTP 403で失敗している。ICANN掲載の新しい `.com fee schedule` が出たら差し替える。ICANNの取引ベース手数料は $0.20/件（FY26・2025-07-01発効。旧 $0.18）（01）。
 - **Trend Score と Domain Score は掛け算しない。** 独立した2軸で、掛けると「勢いはあるが名前が悪い」と「名前は良いが勢いが無い」が区別できなくなる。散布図で見せる（04）。
 

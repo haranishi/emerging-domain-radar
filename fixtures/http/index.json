@@ -347,13 +347,5 @@
       "content-type": "application/json",
       "cache-control": "public, max-age=71986, stale-if-error=86400"
     }
-  },
-  {
-    "match": "https://open.er-api.com/v6/latest/USD",
-    "file": "erapi.json",
-    "status": 200,
-    "headers": {
-      "content-type": "application/json"
-    }
   }
 ]

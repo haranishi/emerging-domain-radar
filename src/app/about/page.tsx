@@ -13,7 +13,7 @@ import type { Status } from '@/lib/db/types';
 import { MANUAL_SEARCH_LIMIT, NEGATIVE_CACHE_DAYS, PRICE_UNAVAILABLE_NOTE, SUPPORTED_TLD, UNSUPPORTED_TLD_NOTE } from '@/lib/domain';
 import { KEYWORD_MATCH_SCORE, NEUTRAL_PRICE_SCORE, WEIGHTS } from '@/lib/domain/score';
 import { AVAILABILITY_CAVEAT, PREMIUM_INFERRED_NOTE, TRADEMARK_REQUIRED_NOTE } from '@/lib/domain/types';
-import { FALLBACK_SOURCE, FRANKFURTER_SOURCE, FX_DISCLAIMER } from '@/lib/fx/frankfurter';
+import { FRANKFURTER_SOURCE, FX_DISCLAIMER } from '@/lib/fx/frankfurter';
 import { RATE_LIMITS, type HostLimit } from '@/lib/http';
 import { WIKI_PRESENT_BONUS, WIKI_PRESENT_CAP } from '@/lib/japan/score';
 import {
@@ -136,7 +136,6 @@ const HOST_NOTES: Record<string, { label: string; purpose: string; auth: string 
   'data.iana.org': { label: 'IANA RDAP bootstrap', purpose: 'TLD ごとの RDAP エンドポイント解決', auth: 'キー不要' },
   'api.porkbun.com': { label: 'Porkbun 価格表', purpose: `.${SUPPORTED_TLD} の標準登録価格・更新価格（24h キャッシュ）`, auth: 'キー不要（価格表の参照のみ）' },
   'api.frankfurter.dev': { label: FRANKFURTER_SOURCE, purpose: `USD/JPY の${FX_DISCLAIMER}レート（24h キャッシュ）`, auth: 'キー不要' },
-  'open.er-api.com': { label: `${FALLBACK_SOURCE}（予備）`, purpose: 'Frankfurter が失敗したときの USD/JPY。帰属表示付きで表示', auth: 'キー不要' },
 };
 
 const SCALE_NOTES: Record<string, string> = {

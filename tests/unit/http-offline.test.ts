@@ -266,7 +266,6 @@ describe('レート制限の表', () => {
       'data.iana.org',
       'api.porkbun.com',
       'api.frankfurter.dev',
-      'open.er-api.com',
     ]) {
       expect(RATE_LIMITS[host], host).toBeDefined();
     }

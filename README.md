@@ -48,7 +48,7 @@ npm run check:domains -- example.com    # ドメインを手で調べる（最�
 | トレンド（プレプリント） | arXiv `export.arxiv.org/api/query` | 不要 | 5 秒間隔＋指数バックオフ |
 | トレンド（論文） | OpenAlex `/works`（`group_by` 併用） | 任意 | キー無し $0.10/日・UTC 0 時リセット |
 | 日本語圏 | Qiita API v2・Wikipedia 日本語版・Wikimedia Pageviews | 任意 | Qiita 未認証 60 req/h |
-| 為替 USD→JPY | Frankfurter v2（予備 open.er-api.com） | 不要 | 公式に記載なし |
+| 為替 USD→JPY | Frankfurter v2のみ（失敗時はUSD表示） | 不要 | 24時間キャッシュ |
 
 ## スコアの計算方法
 - **Trend Score**（0〜100）: 成長率・加速度・ソース横断性・「まだ少ない」補正の加重和。件数が多いだけの語は上がらない。
@@ -68,6 +68,8 @@ npm run check:domains -- example.com    # ドメインを手で調べる（最�
 - **RDAP は総当たりしない。** Verisign の規約が大量の自動問い合わせを禁じている。DNS 事前フィルタ・`taken` の 7 日負のキャッシュ・日次予算（既定 300 件）の 3 段で必ず絞る。
 - 日次300件は本ツールの自主上限で、提供元が許可した件数ではありません。[Verisignの現行RDAP規約](https://www.verisign.com/legal-center/rdap-terms/)を確認し、必要性・頻度が条件に合わない場合は実データ収集を行わないでください。
 - **有料 API を前提にしない。** キーが無いときの挙動を全機能で定義してある。
+- **為替の予備APIは使わない。** ExchangeRate-APIはレートの再配布を認めていないため、取得処理・テスト応答例を除外した。旧版の予備APIキャッシュも返さず、Frankfurterが失敗したら円換算は表示しない。[提供元の条件](https://www.exchangerate-api.com/terms)
+- FrankfurterのAPIは商用利用も可能だが、元のレートは各データ提供元の条件に従う。APIコードのライセンスをレートの利用許諾と混同しない。[公式FAQ](https://frankfurter.dev/#faq)
 
 ## 商標の確認が必要です
 商標の判定はしていない。無料で機械から叩ける商標検索 API が存在せず、WIPO は自動問い合わせを明示的に禁じているため（`docs/research/04_japan_gap_fx_methodology_trademark.md` §4）。
@@ -91,7 +93,7 @@ npm run build
 npm run screenshots  # .tmp/shots/ に 10 枚。別ターミナルで dev か start を先に起動しておく
 ```
 
-2026-09-04 時点で、単体テスト 23 ファイル 397 件と E2E 16 件が全緑、`npm run build` 成功。E2E とスクリーンショットはオフライン fixtures で動く。fixtures は 2026-09-03 の実測応答なので、窓の基準時刻もその日に固定してある。
+2026-09-04 時点で、単体テスト 23 ファイル 397 件と E2E 16 件が全緑、`npm run build` 成功という記録がある。これは今回の修正の実行結果ではない。E2E とスクリーンショットはオフライン fixtures で動き、窓の基準時刻は2026-09-03に固定している。fixturesには合成データが含まれ、すべてを実測応答とは扱わない。
 
 ## ドキュメント
 - [docs/01_requirements.md](docs/01_requirements.md) — 要件定義（正本）
@@ -103,5 +105,6 @@ npm run screenshots  # .tmp/shots/ に 10 枚。別ターミナルで dev か st
 ## ソース公開とライセンス
 
 自作コード・資料は [MIT License](LICENSE) です。外部ライブラリ、API由来のデータ、第三者の文章は各権利者の条件に従い、MITで再許諾しません。
+Next.js初期テンプレートとSVGの元の著作権表示・MIT許諾文は[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)に収録しています。MITに商標の使用許諾は含まれません。
 ソース公開は、収集結果の自由な再配布、商標の利用許諾、本番サービスとしての適法性を保証しません。
 APIを実行するときは、各提供元の最新の利用条件・アクセス上限を確認してください。実行ログ・DB・認証情報はリポジトリへ入れないでください。

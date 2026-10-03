@@ -19,7 +19,7 @@
 | Product Hunt | **不採用（P1）**。規約が商用利用禁止・トークン必須 | 03 |
 | Google Trends / X / YouTube / Podcast | **不採用（P1〜P2）**。Trends 公式 API はアルファ申請制、X は無料枠なし従量課金、YouTube search は 100 回/日 | 03 |
 | 日本語圏 | **Qiita API v2（`Total-Count` ヘッダ・未認証 60 req/h）＋ Wikipedia 日本語版（検索 API・Pageviews API）**。Google News RSS はライセンス上不採用 | 04 §1 |
-| 為替 | **Frankfurter v2** `GET https://api.frankfurter.dev/v2/rates?base=USD&quotes=JPY&expand=providers`（キー不要・出典行つき）。予備 open.er-api.com（帰属表示必須）。表示は「参考値」 | 04 §2 |
+| 為替 | **Frankfurter v2のみ** `GET https://api.frankfurter.dev/v2/rates?base=USD&quotes=JPY&expand=providers`（キー不要・出典行つき）。取得失敗なら円換算なし。表示は「参考値」 | 04 §2。2026-10-03に予備APIを廃止 |
 | 商標 | 自動判定は不可（USPTO/JPO API は閉じている・WIPO は自動化禁止）。**手動確認リンク＋常時注意文** | 04 §4 |
 | スコア式 | Trend Score・Status・Domain Score は **research/04 §3.4・§3.5・§5.4 の式を採用**（本書 §5.4 に確定値を転記） | 04 |
 
@@ -224,7 +224,7 @@ LlmKeyword = { keyword, short_description, why_emerging, first_seen_context, rel
 - `GET /api/domains/check?domains=a.com,b.com`（最大 20）: 正規化（小文字・空白・`https://`・末尾 `/`・パスを除去）→ `.com` 以外は `availability:'unsupported'`（メッセージ「MVP は .com のみ」）→ DNS → RDAP → 価格表 → `domain_checks` に保存 → JSON。フィールド: `domain, availability, availabilitySource, registrationPrice, renewalPrice, currency, premium, priceSource, checkedAt, officialLinks[], notes[]`。
 - `GET /api/keywords?status=&available=1&maxPrice=&minTrend=&minOpportunity=&excludePremium=1&maxLength=&sources=hn,github`: 最新ランの一覧。ページはサーバーコンポーネントで直接 DB から読む（自 API を fetch しない）。
 - `POST /api/watchlist` body `{keyword, domain, registrationPrice, renewalPrice, currency, trendScore, opportunityScore}` / `DELETE /api/watchlist?domain=`。
-- `GET /api/fx`: Frankfurter v2 → `{ rate, asOf, source: 'Frankfurter v2 (central-bank blend)', ecbDate, fetchedAt }`。失敗時 open.er-api.com（`attribution` に帰属リンク）。両方失敗なら `{ rate: null }` で UI は USD のみ。表示は「参考値」。
+- `GET /api/fx`: Frankfurter v2 → `{ rate, asOf, source: 'Frankfurter v2 (central-bank blend)', ecbDate, fetchedAt, attribution: null }`。失敗なら `{ rate: null }` で UI は USD のみ。予備APIとその旧キャッシュは使わない。表示は「参考値」。
 - 画面構成は `02_ux_design.md` §3.4。サーバーコンポーネント中心。クライアント部品はフィルターバー（URL 同期）・検索フォーム・Watchlist ボタンのみ。見出しは `Opportunity Score（調査優先度）`。
 - 空状態: ラン無し→「`npm run radar:collect` を実行してください」と手順。デモ確認用に `npm run seed:demo` を案内。
 - ダッシュボードの Status フィルター既定は「すべて」。Noise は保存されないので出ない。

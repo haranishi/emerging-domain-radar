@@ -2,13 +2,12 @@
  * `GET /api/fx` — USD/JPY の参考レート（契約は docs/03_architecture.md §8）。
  *
  * 返す形: `{ rate, asOf, source, ecbDate, fetchedAt, attribution }`。
- * 両方の提供元が失敗したときは `rate: null` で 200（UI は USD だけ出す）。
+ * Frankfurter の取得が失敗したときは `rate: null` で 200（UI は USD だけ出す）。
  * ここを 500 にすると「為替が取れない」だけで画面が壊れるが、円換算は参考値であって
  * 主データではないため、取れないことは正常な結果として扱う。
  *
- * `attribution` は契約の 5 項目に無いが返す。予備の open.er-api.com は
- * 帰属表示を条件に無償提供されているので、レートを配る口は帰属文も一緒に配る必要がある
- * （Frankfurter 由来のときは null）。
+ * `attribution` は応答互換性のため null を返す。再配布禁止の予備APIは使用せず、
+ * getUsdJpyCached が旧キャッシュも排除する。
  *
  * DB を渡すのは 24 時間キャッシュのため。毎リクエストで外部を叩くと、
  * 画面の再読み込みだけで提供元へ無駄な負荷をかける。

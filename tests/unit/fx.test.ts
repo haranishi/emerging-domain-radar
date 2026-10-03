@@ -1,19 +1,17 @@
 /** 為替（architecture §8・research/04 §2.3）。 */
 import { describe, expect, it, beforeEach, vi } from 'vitest';
 import {
-  FALLBACK_ATTRIBUTION,
-  FALLBACK_SOURCE,
   FRANKFURTER_SOURCE,
   FX_DISCLAIMER,
   FX_NEGATIVE_CACHE_TTL_MS,
   fetchUsdJpy,
   getUsdJpyCached,
-  parseFallback,
   parseFrankfurter,
 } from '../../src/lib/fx/frankfurter';
 import { resetEnvCache } from '../../src/lib/env';
 import { getHttpStats, resetHttpStats } from '../../src/lib/http';
 import { createMemoryDb } from '../../src/lib/db/client';
+import { saveFxRate } from '../../src/lib/db/repos/fx';
 
 describe('parseFrankfurter', () => {
   it('v2 の配列応答からレート・日付・出典を取る', () => {
@@ -53,24 +51,6 @@ describe('parseFrankfurter', () => {
   });
 });
 
-describe('parseFallback（open.er-api.com）', () => {
-  it('帰属表示を必ず付ける', () => {
-    const r = parseFallback({
-      result: 'success',
-      time_last_update_utc: 'Wed, 03 Sep 2026 00:00:01 +0000',
-      rates: { USD: 1, JPY: 159.6 },
-    });
-    expect(r?.rate).toBe(159.6);
-    expect(r?.source).toBe(FALLBACK_SOURCE);
-    expect(r?.attribution).toBe(FALLBACK_ATTRIBUTION);
-  });
-
-  it('result が success 以外なら null', () => {
-    expect(parseFallback({ result: 'error', rates: { JPY: 159 } })).toBeNull();
-    expect(parseFallback({ result: 'success', rates: {} })).toBeNull();
-  });
-});
-
 describe('getUsdJpyCached', () => {
   beforeEach(() => {
     resetEnvCache();
@@ -104,6 +84,17 @@ describe('getUsdJpyCached', () => {
     const r = await getUsdJpyCached();
     expect(r.rate).toBe(159.85);
   });
+
+  it('旧版の予備APIキャッシュは返さず Frankfurter から取り直す', async () => {
+    const db = createMemoryDb();
+    saveFxRate(db, { base: 'USD', quote: 'JPY', rate: 123, as_of: '2000-01-01', source: 'open.er-api.com' });
+    const r = await getUsdJpyCached(db);
+    expect(r.rate).toBe(159.85);
+    expect(r.source).toBe(FRANKFURTER_SOURCE);
+    expect(r.attribution).toBeNull();
+    expect(getHttpStats().callsByHost['api.frankfurter.dev']).toBe(1);
+    expect(getHttpStats().callsByHost['open.er-api.com']).toBeUndefined();
+  });
 });
 
 describe('fetchUsdJpy', () => {
@@ -126,8 +117,29 @@ describe('fetchUsdJpy', () => {
   });
 });
 
-describe('getUsdJpyCached の負キャッシュ', () => {
-  it('両提供元の失敗後は短い TTL 内に外部へ再試行しない', async () => {
+describe('取得失敗時は別の提供元へ切り替えない', () => {
+  const failures: [string, () => Promise<{ ok: boolean; json?: () => unknown }>][] = [
+    ['接続失敗', () => Promise.reject(new Error('offline'))],
+    ['HTTP エラー', () => Promise.resolve({ ok: false })],
+    ['レート欠落', () => Promise.resolve({ ok: true, json: () => [] })],
+    ['JSON 破損', () => Promise.resolve({ ok: true, json: () => { throw new Error('invalid JSON'); } })],
+  ];
+  it.each(failures)('%s なら rate:null を返す', async (_label, response) => {
+    vi.resetModules();
+    const httpGet = vi.fn((_url: string) => response());
+    vi.doMock('../../src/lib/http', () => ({ httpGet }));
+    try {
+      const fx = await import('../../src/lib/fx/frankfurter');
+      expect(await fx.fetchUsdJpy()).toMatchObject({ rate: null, source: null, attribution: null });
+      expect(httpGet).toHaveBeenCalledTimes(1);
+      expect(httpGet.mock.calls[0]?.[0]).toMatch(/^https:\/\/api\.frankfurter\.dev\//);
+    } finally {
+      vi.doUnmock('../../src/lib/http');
+      vi.resetModules();
+    }
+  });
+
+  it('取得失敗後は短い TTL 内に外部へ再試行しない', async () => {
     vi.resetModules();
     const httpGet = vi.fn().mockRejectedValue(new Error('offline'));
     vi.doMock('../../src/lib/http', () => ({ httpGet }));
@@ -135,7 +147,23 @@ describe('getUsdJpyCached の負キャッシュ', () => {
       const fx = await import('../../src/lib/fx/frankfurter');
       expect((await fx.getUsdJpyCached()).rate).toBeNull();
       expect((await fx.getUsdJpyCached()).rate).toBeNull();
-      expect(httpGet).toHaveBeenCalledTimes(2);
+      expect(httpGet).toHaveBeenCalledTimes(1);
+    } finally {
+      vi.doUnmock('../../src/lib/http');
+      vi.resetModules();
+    }
+  });
+
+  it('Frankfurter が失敗しても旧版の予備APIキャッシュは返さない', async () => {
+    const db = createMemoryDb();
+    saveFxRate(db, { base: 'USD', quote: 'JPY', rate: 123, as_of: '2000-01-01', source: 'open.er-api.com' });
+    vi.resetModules();
+    const httpGet = vi.fn().mockRejectedValue(new Error('offline'));
+    vi.doMock('../../src/lib/http', () => ({ httpGet }));
+    try {
+      const fx = await import('../../src/lib/fx/frankfurter');
+      expect(await fx.getUsdJpyCached(db)).toMatchObject({ rate: null, source: null, attribution: null });
+      expect(httpGet).toHaveBeenCalledTimes(1);
     } finally {
       vi.doUnmock('../../src/lib/http');
       vi.resetModules();

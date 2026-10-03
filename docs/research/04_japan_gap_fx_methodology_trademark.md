@@ -13,9 +13,9 @@
 3. **Google News RSS は採用しない。** フィード本文の著作権表記が「personal feed reader での個人・非商用利用に限る。それ以外の利用は明確に禁止」と明記している（実測で取得）。
 4. **はてなブックマークの検索RSSは動くが件数が取れない**（1ページ40件固定・総件数フィールドなし）。Zenn・note は公式APIが無く、note は `robots.txt` で `/api/*` を Disallow。連携するなら Zenn のみ、慎重に。
 5. connpass API v2 はキー必須（申請制・個人は無償）。Yahoo!リアルタイム検索は API が存在しない（Yahoo!デベロッパーネットワークのAPI一覧に無い）。
-6. 為替は **Frankfurter v2（api.frankfurter.dev）が第一候補**。キー不要・CORS可・`expand=providers` で「どの中央銀行の何日のレートを混ぜたか」が全部返る＝出典明記の要件をそのまま満たす。
+6. 為替は **Frankfurter v2（api.frankfurter.dev）のみ採用**。`expand=providers` で提供元と日付を取得する。取得失敗なら円換算を表示しない。
 7. Frankfurter は 2026-09 時点で **ECB専用ではなく84中央銀行のブレンド**に変わっている。ECB だけが欲しければ `providers=ECB` を付ける。旧 `api.frankfurter.app` は 301 で新ホストへ転送される。
-8. 予備は `open.er-api.com`。`time_last_update_utc` / `time_next_update_utc` / `provider` を返すので出典明記に向くが、**帰属表示リンクが必須**で再配布は禁止。
+8. `open.er-api.com` は2026-10-03に不採用へ変更。帰属表示が必要で、レートの再配布は禁止されている。
 9. Google Trends の "Breakout" は公式に **+5,000% 超**の意味。ただし低ボリューム語は 0 として扱われるため、伸び率だけを信じると少数ノイズを拾う。
 10. Trend Score は **成長率（Laplace平滑化つき）・加速度・ソース数・早さ（絶対数の小ささ）の4成分の加重和**で作る。式は §3.4 にそのまま実装できる形で置いた。
 11. Status は Trend Score とは**別軸**にする。Early / Emerging / Rising / Trending / Mainstream ＋ Fading を、30日件数と成長率の順序付きルールで判定する（§3.5）。
@@ -184,7 +184,7 @@ CORS が全開なのでブラウザから直接呼べる。4時間キャッシ�
 
 ### 2.1 結論
 
-**Frankfurter v2 を第一候補、open.er-api.com を予備**にする。どちらもキー不要・CORS可・出典と時刻を応答に含められる。
+**Frankfurter v2のみ使用**する。元データ提供元の条件に従い、取得失敗時は円換算を表示しない。再配布禁止のopen.er-api.comは使用しない（2026-10-03変更）。
 
 ### 2.2 比較表
 
@@ -192,7 +192,7 @@ CORS が全開なのでブラウザから直接呼べる。4時間キャッシ�
 |---|---|---|---|---|---|---|---|
 | **Frankfurter v2** | `api.frankfurter.dev` | 不要 | **`expand=providers` で各中央銀行のキー・日付・レートを列挙** | 各行に `date` | 日次（プロバイダごと） | 実測未確認（`Access-Control-Allow-Origin` はヘッダーに出ず） | オープンソース・自己ホスト可 |
 | Frankfurter v1 | `api.frankfurter.dev/v1` | 不要 | 無し（`base`/`date` のみ） | `date` | 日次 | 同上 | v2 へ移行推奨 |
-| open.er-api.com | `open.er-api.com/v6` | 不要 | `provider` フィールド | `time_last_update_utc` / `time_next_update_utc` | **1日1回** | **`Access-Control-Allow-Origin: *`**（実測） | **帰属表示リンク必須・再配布禁止** |
+| open.er-api.com（不採用） | open.er-api.com | 不要 | 指定リンクが必要 | — | — | — | レートの再配布は禁止。2026-10-03に使用を廃止 |
 | ExchangeRate-API Free | `v6.exchangerate-api.com` | **必要** | — | — | 1日1回 | — | 1,500 req/月 |
 | ECB 直接（XML） | `www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml` | 不要 | ECB そのもの | `time` 属性 | 平日 16:00 CET 頃 | 未確認 | **EUR基準のみ**＝USD→JPY は自分でクロス計算 |
 
@@ -240,53 +240,14 @@ GET https://api.frankfurter.dev/v1/latest?base=USD&symbols=JPY   （旧v1・現�
 - CSV 出力（`.csv` を付ける）、NDJSON（`Accept: application/x-ndjson`）にも対応。
 - レート制限についての記述は公式ドキュメントに見当たらなかった（**未確認**）。ローカルツールで1日1回引く程度なら問題にならない。
 
-### 2.4 open.er-api.com（実測あり）
+### 2.4 open.er-api.com（2026-10-03に不採用へ変更）
 
-公式ドキュメント：https://www.exchangerate-api.com/docs/free （確認日 2026-09-03）
+[公式のopen access条件](https://www.exchangerate-api.com/docs/free)と[利用規約](https://www.exchangerate-api.com/terms)を再確認した。レートを使う画面には指定の帰属リンクが必要で、取得したレートの再配布やプログラム経由のアクセス提供も禁止されている。帰属文をJSONへ含めるだけでは解消しない。
 
-実測（2026-09-03）：
+本ツールは `GET /api/fx` でレートを返すため、この提供元を使用しない。取得処理・オフライン応答例・文書中の取得済みレート例を最新版から除外した。以前の予備API由来のDBキャッシュも画面やAPIに返さない。
 
-```
-GET https://open.er-api.com/v6/latest/USD
-→ {
-    "result": "success",
-    "provider": "https://www.exchangerate-api.com",
-    "documentation": "https://www.exchangerate-api.com/docs/free",
-    "terms_of_use": "https://www.exchangerate-api.com/terms",
-    "time_last_update_unix": 1788393751,
-    "time_last_update_utc": "Thu, 03 Sep 2026 00:02:31 +0000",
-    "time_next_update_utc": "Fri, 04 Sep 2026 00:09:01 +0000",
-    "base_code": "USD",
-    "rates": { "JPY": 159.088772, ... }   // 166通貨
-  }
+この変更はローカルの運用DBや既存のGit履歴を削除しない。古い応答例の作成方法や利用許可は未確認である。過去の履歴に残るデータの取扱いは別の確認事項である。
 
-ヘッダー: access-control-allow-origin: *  /  cache-control: public, max-age=3600
-```
-
-**応答自体に出典URL・規約URL・前回更新時刻・次回更新時刻が入っている**ので、出典明記の要件を満たしやすい。CORS も全開。
-
-**規約上の条件（公式ドキュメントの原文）**：
-
-> This open access API is subject to our Terms and requires attribution. You're welcome to cache the data we respond with and to use it for either personal or commercial currency conversion purposes. You are, however, not allowed to re-distribute it.
-
-> **Attribution** — We require attribution on the pages you're using these rates with the link below:
-> `<a href="https://www.exchangerate-api.com">Rates By Exchange Rate API</a>`
-
-**レート制限（公式ドキュメントの原文）**：
-
-> If you only request once every 24 hours you won't need to read any more of this section. Easy!
-> If you can't keep a cached response for that long, you could still request once every hour and never get rate limited.
-> Rate limited IP's will receive HTTP code 429 responses. After 20 minutes the rate limit will finish and new requests will be allowed through.
-
-**採用するなら、UIに帰属表示リンクを出すこと（必須）と、キャッシュを1時間以上持つことが条件。**
-
-プラン差（同ページ・確認日 2026-09-03）：
-
-| プラン | キー | 帰属表示 | 更新頻度 | 上限 |
-|---|---|---|---|---|
-| Open | 不要 | **必須** | 1日1回 | Rate limited（詳細非公開・429で20分） |
-| Free | 必要 | 不要 | 1日1回 | 1,500 req/月 |
-| Pro（$10/月） | 必要 | 不要 | 60分ごと | 30,000 req/月 |
 
 ### 2.5 ECB 直接（実測あり）
 
@@ -311,7 +272,7 @@ GET https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml
 1. Frankfurter v2 を `expand=providers` 付きで1日1回だけ引く。
 2. レスポンスの `rate` と、`providers` 配列から抜いた ECB 行（`key === "ECB"`）の `date` を保存する。
 3. UI には `1 USD = 159.87 JPY（出典：Frankfurter / 84中央銀行ブレンド, 2026-09-03取得, ECB系列は2026-09-02基準）` のように出す。
-4. Frankfurter が落ちたら open.er-api.com へフォールバックし、そのときは帰属表示リンクを併記する。
+4. Frankfurterの取得に失敗したら `rate: null` を返し、USDのみ表示する。旧版の予備APIキャッシュも使用しない。
 5. 価格表示は必ず「参考値」と添える。
 
 ---
@@ -802,7 +763,7 @@ function domainScore(f: Features) {
 
 | # | 項目 | 理由 |
 |---|---|---|
-| 10 | open.er-api.com へのフォールバック（帰属表示つき） | Frankfurter 停止時の保険。UIに `Rates By Exchange Rate API` リンクが必須 |
+| 10 | open.er-api.com へのフォールバックは不採用 | 2026-10-03変更。レートをJSONで再配布する構成には条件が合わない |
 | 11 | Qiita の認証トークン対応（1000 req/h） | 語数を増やすと 60 req/h では足りなくなる |
 | 12 | はてなブックマークRSS（40件の有無だけを見る二値シグナル） | 件数は取れないが「はてブに出たか」は Breadth の1票になる |
 | 13 | Zenn `/api/articles`（非公式・壊れる前提） | 日本語圏の技術文脈をもう1ソース増やせる。失敗時は静かにスキップ |
@@ -870,7 +831,7 @@ function domainScore(f: Features) {
 | Frankfurter v2 | `GET /v2/rates?...&providers=ECB` | 200 / `159.6`（date 2026-09-02） |
 | Frankfurter v2 | `GET /v2/rates?...&expand=providers` | 200 / 73プロバイダの個別レートと日付、外れ値に `excluded: true` |
 | Frankfurter 旧 | `GET api.frankfurter.app/latest?...` | **301** → `api.frankfurter.dev/v1/latest?...` |
-| open.er-api.com | `GET /v6/latest/USD` | 200 / JPY 159.088772 / 166通貨 / `time_next_update_utc` あり / CORS `*` |
+| open.er-api.com（不採用） | 旧版で調査した候補 | 取得済みレート例は2026-10-03に最新版から除外 |
 | ECB XML | `GET /stats/eurofxref/eurofxref-daily.xml` | 200 / `time='2026-09-02'` / USD 1.1578 / JPY 184.78（→ USD/JPY 159.59） |
 | USPTO tmsearch | `GET /search/search-results?q=openai` | 200 / 125,660 B / 本文に `openai` 0回 / SPA殻 |
 | USPTO TSDR | `GET tsdrapi.uspto.gov/ts/cd/casestatus/...` | **401** |

@@ -3,21 +3,18 @@
  *
  * v2 は 84 の中央銀行のレートをブレンドして返す（ECB 専用ではない・research/04 §2.3）。
  * `expand=providers` を付けると各行の出典と日付が返るので「取得元・取得時刻を明記」を満たせる。
- * 失敗したら open.er-api.com（帰属表示が必須）。両方失敗なら rate: null で USD だけ表示する。
+ * 取得失敗なら rate: null で USD だけ表示する。再配布禁止の予備APIは使用しない。
  */
 import { httpGet } from '../http';
 import type { Db } from '../db/client';
 import { getFreshFxRate, saveFxRate } from '../db/repos/fx';
 
 const FRANKFURTER = 'https://api.frankfurter.dev/v2/rates';
-const FALLBACK = 'https://open.er-api.com/v6/latest/USD';
 
 export const FRANKFURTER_SOURCE = 'Frankfurter v2 (central-bank blend)';
-export const FALLBACK_SOURCE = 'open.er-api.com';
-export const FALLBACK_ATTRIBUTION = 'Rates By Exchange Rate API (https://www.exchangerate-api.com)';
 /** UI にはこの断りを付ける。 */
 export const FX_DISCLAIMER = '参考値';
-/** 両提供元が落ちたときだけ使う短い負キャッシュ。 */
+/** 取得失敗時に使う短い負キャッシュ。 */
 export const FX_NEGATIVE_CACHE_TTL_MS = 15 * 60 * 1000;
 
 let negativeCache: { result: FxResult; expiresAt: number } | null = null;
@@ -50,12 +47,6 @@ interface FrankfurterRow {
   quote?: string;
   rate?: number;
   providers?: ProviderRate[];
-}
-
-interface FallbackResponse {
-  result?: string;
-  time_last_update_utc?: string;
-  rates?: Record<string, number>;
 }
 
 function empty(): FxResult {
@@ -92,23 +83,6 @@ export function parseFrankfurter(rows: FrankfurterRow[]): FxResult | null {
   };
 }
 
-export function parseFallback(body: FallbackResponse): FxResult | null {
-  const rate = body.rates?.JPY;
-  if (body.result !== 'success' || typeof rate !== 'number') return null;
-  return {
-    base: 'USD',
-    quote: 'JPY',
-    rate,
-    asOf: body.time_last_update_utc ?? null,
-    source: FALLBACK_SOURCE,
-    ecbDate: null,
-    providers: [],
-    attribution: FALLBACK_ATTRIBUTION,
-    fetchedAt: new Date().toISOString(),
-    disclaimer: FX_DISCLAIMER,
-  };
-}
-
 export async function fetchUsdJpy(): Promise<FxResult> {
   const url = `${FRANKFURTER}?base=USD&quotes=JPY&expand=providers`;
   try {
@@ -118,17 +92,7 @@ export async function fetchUsdJpy(): Promise<FxResult> {
       if (parsed) return parsed;
     }
   } catch {
-    // 予備へ進む
-  }
-
-  try {
-    const res = await httpGet(FALLBACK, { label: 'fx-fallback', retries: 1 });
-    if (res.ok) {
-      const parsed = parseFallback(res.json<FallbackResponse>());
-      if (parsed) return parsed;
-    }
-  } catch {
-    // 両方失敗 → rate: null
+    // 取得失敗 → rate: null。別の提供元へは切り替えない。
   }
   return empty();
 }
@@ -140,7 +104,8 @@ export async function fetchUsdJpy(): Promise<FxResult> {
 export async function getUsdJpyCached(db?: Db, maxAgeMs = 24 * 3600 * 1000): Promise<FxResult> {
   if (db) {
     const cached = getFreshFxRate(db, 'USD', 'JPY', maxAgeMs);
-    if (cached) {
+    // 旧版が保存した予備API由来のレートも、画面や /api/fx に返さない。
+    if (cached && cached.source === FRANKFURTER_SOURCE) {
       let providers: ProviderRate[] = [];
       if (cached.providers_json) {
         try {
@@ -158,7 +123,7 @@ export async function getUsdJpyCached(db?: Db, maxAgeMs = 24 * 3600 * 1000): Pro
         source: cached.source,
         ecbDate: ecb?.date ?? null,
         providers,
-        attribution: cached.source === FALLBACK_SOURCE ? FALLBACK_ATTRIBUTION : null,
+        attribution: null,
         fetchedAt: cached.fetched_at,
         disclaimer: FX_DISCLAIMER,
       };
