@@ -87,7 +87,7 @@ describe('getUsdJpyCached', () => {
 
   it('旧版の予備APIキャッシュは返さず Frankfurter から取り直す', async () => {
     const db = createMemoryDb();
-    saveFxRate(db, { base: 'USD', quote: 'JPY', rate: 123, as_of: '2000-01-01', source: 'open.er-api.com' });
+    saveFxRate(db, { base: 'USD', quote: 'JPY', rate: 123, as_of: '2000-01-01', source: 'open.er-api.com', providers: undefined });
     const r = await getUsdJpyCached(db);
     expect(r.rate).toBe(159.85);
     expect(r.source).toBe(FRANKFURTER_SOURCE);
@@ -156,7 +156,7 @@ describe('取得失敗時は別の提供元へ切り替えない', () => {
 
   it('Frankfurter が失敗しても旧版の予備APIキャッシュは返さない', async () => {
     const db = createMemoryDb();
-    saveFxRate(db, { base: 'USD', quote: 'JPY', rate: 123, as_of: '2000-01-01', source: 'open.er-api.com' });
+    saveFxRate(db, { base: 'USD', quote: 'JPY', rate: 123, as_of: '2000-01-01', source: 'open.er-api.com', providers: undefined });
     vi.resetModules();
     const httpGet = vi.fn().mockRejectedValue(new Error('offline'));
     vi.doMock('../../src/lib/http', () => ({ httpGet }));
