@@ -27,3 +27,11 @@ it('documented CLI commands load .env before opening the database', () => {
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+it('seed:demo は保存先の全テーブルを消すので、.env の保存先を読ませない', () => {
+  const pkg = JSON.parse(readFileSync(path.join(process.cwd(), 'package.json'), 'utf8'));
+  expect(pkg.scripts['seed:demo']).not.toContain('--env-file');
+  // 読ませてよいのは、保存先を消さない収集と手動の確認だけ。
+  expect(pkg.scripts['radar:collect']).toContain('--env-file-if-exists=.env');
+  expect(pkg.scripts['check:domains']).toContain('--env-file-if-exists=.env');
+});
