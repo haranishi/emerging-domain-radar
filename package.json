@@ -10,9 +10,9 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "e2e": "playwright test",
-    "radar:collect": "tsx scripts/collect.ts",
-    "check:domains": "tsx scripts/check-domains.ts",
-    "seed:demo": "tsx scripts/seed-demo.ts",
+    "radar:collect": "node --env-file-if-exists=.env --import tsx scripts/collect.ts",
+    "check:domains": "node --env-file-if-exists=.env --import tsx scripts/check-domains.ts",
+    "seed:demo": "node --env-file-if-exists=.env --import tsx scripts/seed-demo.ts",
     "screenshots": "tsx scripts/screenshots.ts"
   },
   "dependencies": {
