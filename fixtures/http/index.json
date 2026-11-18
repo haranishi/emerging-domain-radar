@@ -171,7 +171,7 @@
     "headers": { "content-type": "application/json" }
   },
   {
-    "match": "^https://api\\.openalex\\.org/works\\?filter=title_and_abstract\\.search%3A%22[^&]+%22%2Cfrom_publication_date%3A2026-08-27%2Cto_publication_date%3A2026-09-03&group_by=publication_year(?:&mailto=[^&]+)?(?:&api_key=[^&]+)?$",
+    "match": "^https://api\\.openalex\\.org/works\\?filter=title_and_abstract\\.search%3A%22[^&]+%22%2Cfrom_publication_date%3A2026-08-27%2Cto_publication_date%3A2026-09-02&group_by=publication_year(?:&mailto=[^&]+)?(?:&api_key=[^&]+)?$",
     "regex": true,
     "file": "openalex-works-7d.json",
     "status": 200,
@@ -186,21 +186,21 @@
     }
   },
   {
-    "match": "^https://api\\.openalex\\.org/works\\?filter=title_and_abstract\\.search%3A%22[^&]+%22%2Cfrom_publication_date%3A2026-08-20%2Cto_publication_date%3A2026-08-27&group_by=publication_year(?:&mailto=[^&]+)?(?:&api_key=[^&]+)?$",
+    "match": "^https://api\\.openalex\\.org/works\\?filter=title_and_abstract\\.search%3A%22[^&]+%22%2Cfrom_publication_date%3A2026-08-20%2Cto_publication_date%3A2026-08-26&group_by=publication_year(?:&mailto=[^&]+)?(?:&api_key=[^&]+)?$",
     "regex": true,
     "file": "openalex-works-prev7d.json",
     "status": 200,
     "headers": { "content-type": "application/json", "x-ratelimit-cost-usd": "0.0001" }
   },
   {
-    "match": "^https://api\\.openalex\\.org/works\\?filter=title_and_abstract\\.search%3A%22[^&]+%22%2Cfrom_publication_date%3A2026-08-04%2Cto_publication_date%3A2026-09-03&group_by=publication_year(?:&mailto=[^&]+)?(?:&api_key=[^&]+)?$",
+    "match": "^https://api\\.openalex\\.org/works\\?filter=title_and_abstract\\.search%3A%22[^&]+%22%2Cfrom_publication_date%3A2026-08-04%2Cto_publication_date%3A2026-09-02&group_by=publication_year(?:&mailto=[^&]+)?(?:&api_key=[^&]+)?$",
     "regex": true,
     "file": "openalex-works-30d.json",
     "status": 200,
     "headers": { "content-type": "application/json", "x-ratelimit-cost-usd": "0.0001" }
   },
   {
-    "match": "^https://api\\.openalex\\.org/works\\?filter=title_and_abstract\\.search%3A%22[^&]+%22%2Cfrom_publication_date%3A2026-07-05%2Cto_publication_date%3A2026-08-04&group_by=publication_year(?:&mailto=[^&]+)?(?:&api_key=[^&]+)?$",
+    "match": "^https://api\\.openalex\\.org/works\\?filter=title_and_abstract\\.search%3A%22[^&]+%22%2Cfrom_publication_date%3A2026-07-05%2Cto_publication_date%3A2026-08-03&group_by=publication_year(?:&mailto=[^&]+)?(?:&api_key=[^&]+)?$",
     "regex": true,
     "file": "openalex-works-prev30d.json",
     "status": 200,

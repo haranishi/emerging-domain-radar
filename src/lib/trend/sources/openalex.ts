@@ -43,7 +43,7 @@ function buildUrl(keyword: string, from: Date, to: Date): string {
   const u = new URL(WORKS);
   u.searchParams.set(
     'filter',
-    `title_and_abstract.search:"${keyword}",from_publication_date:${dateStamp(from)},to_publication_date:${dateStamp(to)}`,
+    `title_and_abstract.search:"${keyword}",from_publication_date:${dateStamp(from)},to_publication_date:${dateStamp(new Date(to.getTime() - 86_400_000))}`,
   );
   u.searchParams.set('group_by', 'publication_year');
   if (env.OPENALEX_MAILTO) u.searchParams.set('mailto', env.OPENALEX_MAILTO);
