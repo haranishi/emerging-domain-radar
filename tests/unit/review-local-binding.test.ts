@@ -32,6 +32,8 @@ it.skipIf(!lan)('the default dev command accepts only loopback connections', asy
   const child = spawn(process.execPath, [path.join(root, 'node_modules/next/dist/bin/next'), ...args, '--port', String(port), '--webpack'], {
     cwd: dir, env: { PATH: process.env.PATH, NODE_ENV: 'development', NEXT_TELEMETRY_DISABLED: '1' }, stdio: ['ignore', 'pipe', 'pipe'],
   });
+  // 起動前に終了しても後始末が止まらないよう、終了の待ちは生成の直後に作って共有する。
+  const closed = new Promise<void>((resolve) => child.once('exit', () => resolve()));
   try {
     await new Promise<void>((resolve, reject) => {
       let output = '';
@@ -47,7 +49,6 @@ it.skipIf(!lan)('the default dev command accepts only loopback connections', asy
     expect(await canConnect('127.0.0.1', port)).toBe(true);
     expect(await canConnect(lan!, port)).toBe(false);
   } finally {
-    const closed = new Promise<void>((resolve) => child.once('exit', () => resolve()));
     child.kill('SIGTERM');
     await closed;
     rmSync(dir, { recursive: true, force: true });
