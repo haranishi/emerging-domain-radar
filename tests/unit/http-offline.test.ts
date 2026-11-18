@@ -37,8 +37,8 @@ describe('オフラインモード', () => {
   });
 
   it('OpenAlex の x-ratelimit-cost-usd を集計する', async () => {
-    await httpGet('https://api.openalex.org/works?filter=title_and_abstract.search%3A%22x%22%2Cfrom_publication_date%3A2026-08-27%2Cto_publication_date%3A2026-09-03&group_by=publication_year');
-    await httpGet('https://api.openalex.org/works?filter=title_and_abstract.search%3A%22y%22%2Cfrom_publication_date%3A2026-08-20%2Cto_publication_date%3A2026-08-27&group_by=publication_year');
+    await httpGet('https://api.openalex.org/works?filter=title_and_abstract.search%3A%22x%22%2Cfrom_publication_date%3A2026-08-27%2Cto_publication_date%3A2026-09-02&group_by=publication_year');
+    await httpGet('https://api.openalex.org/works?filter=title_and_abstract.search%3A%22y%22%2Cfrom_publication_date%3A2026-08-20%2Cto_publication_date%3A2026-08-26&group_by=publication_year');
     const stats = getHttpStats();
     expect(stats.openalexCostUsd).toBeCloseTo(0.0002, 8);
     expect(stats.openalexRemainingUsd).toBeCloseTo(0.0969, 8);
@@ -82,10 +82,10 @@ describe('オフラインモード', () => {
           `https://api.openalex.org/works?filter=title_and_abstract.search%3A%22kw%22%2Cfrom_publication_date%3A${from}%2Cto_publication_date%3A${to}&group_by=publication_year`,
         )
       ).json<{ meta: { count: number } }>().meta.count;
-    expect(await openalex('2026-08-27', '2026-09-03')).toBe(3);
-    expect(await openalex('2026-08-20', '2026-08-27')).toBe(2);
-    expect(await openalex('2026-08-04', '2026-09-03')).toBe(14);
-    expect(await openalex('2026-07-05', '2026-08-04')).toBe(8);
+    expect(await openalex('2026-08-27', '2026-09-02')).toBe(3);
+    expect(await openalex('2026-08-20', '2026-08-26')).toBe(2);
+    expect(await openalex('2026-08-04', '2026-09-02')).toBe(14);
+    expect(await openalex('2026-07-05', '2026-08-03')).toBe(8);
 
     const qiita = async (query: string): Promise<string | null> =>
       (await httpGet(`https://qiita.com/api/v2/items?query=${query}&per_page=1`)).headers.get('total-count');

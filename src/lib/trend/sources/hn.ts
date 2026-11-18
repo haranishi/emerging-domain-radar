@@ -155,7 +155,7 @@ export async function hnOldestBefore(keyword: string, now: Date): Promise<HnOlde
     };
   }
 
-  const oldestUrl = searchUrl('search', {
+  const oldestUrl = searchUrl('search_by_date', {
     query: `"${keyword}"`,
     tags: '(story,comment)',
     numericFilters: `created_at_i<${cutoff}`,

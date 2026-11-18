@@ -17,7 +17,7 @@
 # Node 24・npm
 npm install
 cp .env.example .env                    # 任意。API キーは 1 つも要らない
-npm run seed:demo                       # デモデータを入れて画面の見え方だけ確認する
+npm run seed:demo                       # デモデータを入れて画面の見え方だけ確認する（保存先の全テーブルを消す。.env は読まない）
 npm run dev                             # http://localhost:3000
 npm run radar:collect                   # 実データを収集（キー 0 個で完走する）
 npm run check:domains -- example.com    # ドメインを手で調べる（最大 20 件・.com のみ）

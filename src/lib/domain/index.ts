@@ -20,6 +20,7 @@ import { resolveNsVerdict } from './providers/dns';
 import { rdapLookup } from './providers/rdap';
 import { fetchAllTldPrices, PRICE_SOURCE } from './providers/porkbun-pricing';
 import { officialLinks } from './links';
+import { isRegistrableCom } from './input';
 import {
   AVAILABILITY_CAVEAT,
   PREMIUM_INFERRED_NOTE,
@@ -112,6 +113,18 @@ export async function checkAvailability(
         reason: 'tld-not-supported',
         checkedAt,
         notes: [UNSUPPORTED_TLD_NOTE],
+      });
+      continue;
+    }
+
+    if (!isRegistrableCom(domain)) {
+      results.push({
+        domain,
+        availability: 'unsupported',
+        availabilitySource: 'unsupported',
+        reason: 'invalid-domain',
+        checkedAt,
+        notes: ['登録可能な .com の形式ではありません（サブドメインは対象外）'],
       });
       continue;
     }
@@ -268,7 +281,7 @@ export async function searchDomains(input: string, opts: SearchOptions = {}): Pr
   if (domains.length === 0) return [];
 
   const availability = await checkAvailability(domains, opts);
-  const needsPrice = domains.some((d) => tldOf(d) === SUPPORTED_TLD);
+  const needsPrice = availability.some((a) => a.availability !== 'unsupported');
   const prices = needsPrice ? await getPricing([SUPPORTED_TLD], { db: opts.db }) : [];
   const comPrice = prices.find((p) => p.tld === SUPPORTED_TLD);
   const persist = opts.persist ?? Boolean(opts.db);
