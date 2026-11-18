@@ -18,6 +18,7 @@ import { getDb } from '@/lib/db/client';
 import { addToWatchlist, removeFromWatchlist } from '@/lib/db/repos';
 import { SUPPORTED_TLD, UNSUPPORTED_TLD_NOTE } from '@/lib/domain';
 import { buildWatchlistView } from '@/view/watchlist';
+import { isRegistrableCom } from '@/lib/domain/input';
 
 export const dynamic = 'force-dynamic';
 
@@ -90,6 +91,10 @@ export async function POST(request: Request) {
   }
   if (tldOf(domain) !== SUPPORTED_TLD) {
     return Response.json({ error: `Unsupported TLD (${UNSUPPORTED_TLD_NOTE}).` }, { status: 400 });
+  }
+
+  if (!isRegistrableCom(domain)) {
+    return Response.json({ error: 'A registrable .com domain is required (no subdomains).' }, { status: 400 });
   }
 
   try {
